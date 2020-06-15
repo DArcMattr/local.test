@@ -1,0 +1,40 @@
+<!doctype html5>
+<html lang='en'>
+  <head>
+    <title>Scratch doc</title>
+    <script type='module' src='/js/main.js'></script>
+    <link rel='stylesheet' href='/style/main.css'>
+  </head>
+  <body>
+    <form action='/' method='GET'>
+      <div aria-labelledby='blip-blap'>
+        <h1 id='blip-blap' class='section-title'>Options</h1>
+        <label><input type="checkbox" name="foobar[]" value="1"> Options 1</label>
+        <label><input type="checkbox" name="foobar[]" value="2"> Options 2</label>
+        <label><input type="checkbox" name="foobar[]" value="3"> Options 3</label>
+        <label><input type="checkbox" name="foobar[]" value="4"> Options 4</label>
+        <label><input type="checkbox" name="foobar[]" value="5"> Options 5</label>
+        <label><input type="checkbox" name="foobar[]" value="6"> Options 6</label>
+        <label><input type="checkbox" name="foobar[]" value="7"> Options 7</label>
+        <label><input type="checkbox" name="foobar[]" value="8"> Options 8</label>
+        <label><input type="checkbox" name="foobar[]" value="9"> Options 9</label>
+        <label><input type="checkbox" name="foobar[]" value="a"> Options a</label>
+      </div>
+      <div aria-labelledby='date-time'>
+        <h1 id='date-time' class='section-title'>Time &amp; Date</h1>
+        <label for='date'>
+          Date<br>
+          <input autofocus id='date' name='date' type='date' placeholder=' ' required>
+        </label>
+        <label for='time'>
+          Time<br>
+          <input id='time' name='time' type='time' step='900' min='09:00' max='17:00' placeholder=' ' required>
+        </label>
+      </div>
+      <hr>
+      <button type='submit'>
+        Go
+      </button>
+    </form>
+  </body>
+</html>

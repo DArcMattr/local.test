@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+BROWSERSYNC_HOST=local.test
+
+export BROWSERSYNC_HOST

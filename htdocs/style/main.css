@@ -1,0 +1,66 @@
+:root {
+  --font-size: 1rem;
+  --line-height-multiplier: 1.25;
+  --lh: calc( var( --line-height-multiplier ) * var( --font-size ) );
+  --color-dark: #101010;
+  --color-light: #f0f0f0;
+  background-color: var( --color-light );
+  color: var( --color-dark );
+  line-height: var( --lh );
+  font-size: var( --font-size );
+}
+
+/*
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    background-color: var( --color-dark );
+    color: var( --color-light );
+  }
+}
+*/
+
+* {
+  line-height: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  width: 100%;
+  max-width: calc( 30 * var( --lh ) );
+  margin: auto;
+}
+
+label {
+  cursor: pointer;
+}
+
+form > label {
+  display: block;
+}
+
+[aria-labelledby] {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, 1fr );
+}
+
+.section-title {
+  grid-column: 1 / span 3;
+  text-align: center;
+}
+
+input:focus:valid {
+  outline: 1px solid green;
+}
+
+input:placeholder-shown:required,
+input:not(:placeholder-shown):invalid,
+input:focus:invalid {
+  outline: 3px solid red;
+}
