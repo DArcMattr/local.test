@@ -1,6 +1,5 @@
 node_modules/
 tls/
 .in
-.out
 nginx.conf
 yarn-error.log
