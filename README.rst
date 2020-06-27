@@ -10,17 +10,19 @@ have the `autoenv`_ module running.
 Setup
 -----
 
-Pick a domain name `<domain>`` to replace `local.test`, or stick with it.
+Pick a domain name `<domain>` to replace `local.test`, or stick with it.
 
-Create TLS certificats via::
-
-	mkdir tls; cd tls; mkcert <domain>
+Create TLS certificats via
 
 .. code-block:: sh
 
-Copy and modify the various `.template` files.
+	mkdir tls
+	cd tls
+	mkcert <domain>
 
-Run `npm install`
+Copy and modify the various ``*.template`` files.
+
+Run ``npm install``
 
 
 .. _autoenv: https://github.com/zpm-zsh/autoenv

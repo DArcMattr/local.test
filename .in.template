@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
 BROWSERSYNC_HOST=local.test
+NODE_ENV=development
 
-export BROWSERSYNC_HOST
+export BROWSERSYNC_HOST NODE_ENV
