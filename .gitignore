@@ -1,4 +1,5 @@
 node_modules/
+htdocs/js/
 tls/
 .in
 nginx.conf

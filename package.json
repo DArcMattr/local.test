@@ -7,22 +7,23 @@
   "description": "",
   "main": "htdocs/js/main.js",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
+    "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/runtime": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/runtime": "^7.10.3",
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.7",
     "concurrently": "^5.2.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.3.1",
     "eslint-config-jquery": "^3.0.0",
+    "http2": "^3.3.7",
     "node-sass": "^4.14.1",
     "raw-loader": "^4.0.1",
-    "stylelint": "^13.6.0",
+    "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "stylelint": {
     "extends": [
@@ -33,27 +34,27 @@
     "> 1%"
   ],
   "browser-sync": {
-    "open": false,
-    "reloadDebounce": 500,
-    "ghostMode": false,
+    "cors": true,
     "files": [
       "./htdocs/**/*.css",
       "./htdocs/**/*.html",
       "./htdocs/**/*.js",
       "./htdocs/**/*.php"
     ],
-    "watchOptions": {
-      "ignoreInitial": true
-    },
-    "cors": true,
-    "xip": true,
-    "reloadOnRestart": true,
-    "notify": false,
-    "minify": false,
+    "ghostMode": false,
     "https": {
       "key": "./tls/local.test-key.pem",
       "cert": "./tls/local.test.pem"
-    }
+    },
+    "minify": false,
+    "notify": false,
+    "open": false,
+    "reloadDebounce": 500,
+    "reloadOnRestart": true,
+    "watchOptions": {
+      "ignoreInitial": true
+    },
+    "xip": true
   },
   "eslintConfig": {
     "root": true,
@@ -75,12 +76,12 @@
   },
   "scripts": {
     "bsync": "browser-sync start --host ${BROWSERSYNC_HOST} --proxy https://${BROWSERSYNC_HOST}",
-    "build": "npm run style && npm run script --mode production",
+    "build": "npm run style && npm run script --mode ${NODE_ENV}",
     "lint": "yarn lint:style && yarn lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
-    "lint:js": "eslint htdocs/js/**/*.js",
+    "lint:js": "eslint js/**/*.js",
     "script": "webpack",
     "style": "node-sass ${npm_package_config_styledir}/pre --source-map true --source-map-root . --include-path ${npm_package_config_styledir}/lib --output ${npm_package_config_styledir}",
-    "watch": "concurrently --no-color 'npm run style --watch' 'npm run script --watch --mode development' 'yarn bsync'"
+    "watch": "concurrently 'npm run style --watch' 'npm run script -- --watch --mode ${NODE_ENV}' 'yarn bsync'"
   }
 }
