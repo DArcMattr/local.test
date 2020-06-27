@@ -10,20 +10,24 @@
   font-size: var( --font-size );
 }
 
-/*
 @media screen and (prefers-color-scheme: dark) {
   :root {
     background-color: var( --color-dark );
     color: var( --color-light );
   }
 }
-*/
 
 * {
   line-height: inherit;
   font-size: inherit;
   color: inherit;
   background-color: inherit;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 html {
@@ -50,11 +54,6 @@ form > label {
   grid-template-columns: repeat( auto-fill, 1fr );
 }
 
-.section-title {
-  grid-column: 1 / span 3;
-  text-align: center;
-}
-
 input:focus:valid {
   outline: 1px solid green;
 }
@@ -63,4 +62,13 @@ input:placeholder-shown:required,
 input:not(:placeholder-shown):invalid,
 input:focus:invalid {
   outline: 3px solid red;
+}
+
+.section-title {
+  grid-column: 1 / span 3;
+  text-align: center;
+}
+
+.labeled {
+  box-shadow: 0 2px 2px hsla(60, 100%, 66%, 0.5);
 }
