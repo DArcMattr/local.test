@@ -1,9 +1,13 @@
+/**
+ * vim:set autoread | au CursorHold * checktime | call feedkeys("lh")
+ */
 :root {
   --font-size: 1rem;
   --line-height-multiplier: 1.25;
   --lh: calc( var( --line-height-multiplier ) * var( --font-size ) );
   --color-dark: #101010;
   --color-light: #f0f0f0;
+  --color-highlight: hsla(0, 100%, 66%, 0.5);
   background-color: var( --color-light );
   color: var( --color-dark );
   line-height: var( --lh );
@@ -12,6 +16,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
+		--color-highlight: hsla(60, 100%, 66%, 0.5);
     background-color: var( --color-dark );
     color: var( --color-light );
   }
@@ -70,5 +75,5 @@ input:focus:invalid {
 }
 
 .labeled {
-  box-shadow: 0 2px 2px hsla(60, 100%, 66%, 0.5);
+  box-shadow: 0 0 3px 1px var(--color-highlight);
 }
