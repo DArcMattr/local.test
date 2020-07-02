@@ -8,6 +8,8 @@
   --color-dark: #101010;
   --color-light: #f0f0f0;
   --color-highlight: hsla(0, 100%, 66%, 0.5);
+  --color-input-bg: var( --color-light );
+  --color-input-fg: var( --color-dark );
   background-color: var( --color-light );
   color: var( --color-dark );
   line-height: var( --lh );
@@ -16,7 +18,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
-		--color-highlight: hsla(60, 100%, 66%, 0.5);
+    --color-highlight: hsla(60, 100%, 66%, 0.5);
     background-color: var( --color-dark );
     color: var( --color-light );
   }
@@ -42,6 +44,7 @@ html {
 
 body {
   width: 100%;
+  flex: 1 1 auto;
   max-width: calc( 30 * var( --lh ) );
   margin: auto;
 }
@@ -50,13 +53,17 @@ label {
   cursor: pointer;
 }
 
+form {
+  margin: 0;
+}
+
 form > label {
   display: block;
 }
 
-[aria-labelledby] {
-  display: grid;
-  grid-template-columns: repeat( auto-fill, 1fr );
+input {
+  background-color: var(--color-input-bg);
+  color: var(--color-input-fg);
 }
 
 input:focus:valid {
@@ -69,6 +76,17 @@ input:focus:invalid {
   outline: 3px solid red;
 }
 
+[aria-labelledby] {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, 1fr );
+}
+
+input[type=search] {
+  -webkit-appearance: searchfield;
+  -moz-appearance: searchfield;
+  appearance: searchfield;
+}
+
 .section-title {
   grid-column: 1 / span 3;
   text-align: center;
@@ -76,4 +94,25 @@ input:focus:invalid {
 
 .labeled {
   box-shadow: 0 0 3px 1px var(--color-highlight);
+}
+
+.search-container label {
+  display: inline-flex;
+  transition: max-width .3s ease-in-out;
+  max-width: 10rem;
+  height: var( --lh );
+}
+
+.search-container label > span {
+  padding-right: calc( var( --lh ) / 2 );
+  padding-left: var( --lh );
+}
+
+.search-container label:focus-within {
+  max-width: 20rem;
+}
+
+.search-container [type=search] {
+  width: 100%;
+  border-radius:
 }
