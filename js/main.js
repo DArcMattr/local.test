@@ -35,17 +35,17 @@ ${listOptions}
 	};
 
 	d.addEventListener( "focusin", event => {
-		const tgt = event.target;
+		const tgt = event.target.closest( "input[type=time][min][max][step]" );
 
-		if ( tgt.matches( "input[type=time][min][max][step]" ) ) {
+		if ( tgt !== null ) {
 			timeInputFallback( tgt );
 		}
 	} );
 
 	d.addEventListener( "mouseover", event => {
-		const tgt = event.target;
+		const tgt = event.target.closest( "label" );
 
-		if ( tgt.matches( "label" ) ) {
+		if ( tgt !== null ) {
 			const control = tgt.control;
 
 			control.classList.add( "labeled" );
@@ -53,9 +53,9 @@ ${listOptions}
 	} );
 
 	d.addEventListener( "mouseout", event => {
-		const tgt = event.target;
+		const tgt = event.target.closest( "label" );
 
-		if ( tgt.matches( "label" ) ) {
+		if ( tgt !== null ) {
 			const control = tgt.control;
 
 			control.classList.remove( "labeled" );
