@@ -14,6 +14,7 @@
   color: var( --color-dark );
   line-height: var( --lh );
   font-size: var( --font-size );
+  font-family: serif;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -47,6 +48,10 @@ body {
   flex: 1 1 auto;
   max-width: calc( 30 * var( --lh ) );
   margin: auto;
+}
+
+header {
+  height: calc(2 * var(--lh));
 }
 
 label {
@@ -96,23 +101,65 @@ input[type=search] {
   box-shadow: 0 0 3px 1px var(--color-highlight);
 }
 
-.search-container label {
+.search-container {
   display: inline-flex;
-  transition: max-width .3s ease-in-out;
-  max-width: 10rem;
+  width: auto;
+  color: var( --color-input-fg );
+  background-color: var( --color-input-bg );
+  border-radius: calc( 1 / 2 * var( --lh ) );
   height: var( --lh );
+  transition: background-color .3s ease-in-out;
+}
+
+.search-container:focus-within {
+  background-color: hsla( 60, 50%, 100%, 100% );
+}
+
+.search-container label {
+  display: inline-block;
+  background-color: transparent;
+  padding-left: calc( 1 / 4 * var( --lh ) );
 }
 
 .search-container label > span {
-  padding-right: calc( var( --lh ) / 2 );
-  padding-left: var( --lh );
+  width: auto;
 }
 
-.search-container label:focus-within {
-  max-width: 20rem;
+.search-container input[type='search'] {
+  box-sizing: content-box;
+  border: none;
+  width: calc( 4 * var( --lh ) );
+  transition: width .3s ease-in-out;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
 }
 
-.search-container [type=search] {
-  width: 100%;
-  border-radius:
+.search-container input[type='search']:focus {
+  width: calc( 8 * var( --lh ) );
+  outline: none;
+}
+
+.search-container button {
+  position: relative;
+  background: transparent;
+  border: none;
+  width: calc( 5 / 4 * var( --lh ) );
+}
+
+.search-container button span {
+  margin-left: -999em;
+}
+
+.search-container button:before {
+  content: "";
+  /* http://commons.wikimedia.org/wiki/File:Magnifying_glass_icon.svg */
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OTAiIGhlaWdodD0iNDkwIj4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjM2IiBzdHJva2UtbGluZWNhcD0icm91bmQiCmQ9Im0yODAsMjc4YTE1MywxNTMgMCAxLDAtMiwybDE3MCwxNzBtLTkxLTExNyAxMTAsMTEwLTI2LDI2LTExMC0xMTAiLz4KPC9zdmc+IA==");
+  background-size: contain;
+  display: inline-block;
+  height: calc( 9 / 10 * var( --lh ) );
+  width: calc( 9 / 10 * var( --lh ) );
+  position: absolute;
+  top: calc( 1 / 20 * var( --lh ) );
+  left: calc( 1 / 20 * var( --lh ) );
 }
