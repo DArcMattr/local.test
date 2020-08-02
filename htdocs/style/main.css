@@ -62,6 +62,34 @@ form {
   margin: 0;
 }
 
+details {
+  margin: var( --lh ) 0;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::marker {
+  color: blue;
+}
+
+summary:before {
+  content: '\25b6';
+  margin-right: calc( var( --lh ) / 2 );
+  float: left;
+  transition: transform linear .3s;
+}
+
+details[open] summary:before {
+  transform: rotate(90deg);
+}
+
+details ::-webkit-details-marker {
+  display: none;
+}
+
 form > label {
   display: block;
 }
