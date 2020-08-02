@@ -3,6 +3,10 @@
   "license": "UNLICENSED",
   "name": "local.test",
   "private": true,
+  "repository": {
+  	  "type": "git",
+  	  "url": "https://github.com/DArcMattr/local.test"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "htdocs/js/main.js",
