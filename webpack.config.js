@@ -2,7 +2,6 @@
 
 const glob = require( "glob" );
 const path = require( "path" );
-const TerserPlugin = require( "terser-webpack-plugin" );
 
 module.exports = {
   cache: true,
@@ -34,15 +33,6 @@ module.exports = {
           }
         }
       }
-    ]
-  },
-  optimization: {
-    minimizer: [
-      new TerserPlugin( {
-        cache: true,
-        parallel: false,
-        sourceMap: true
-      } )
     ]
   },
   output: {

@@ -21,8 +21,6 @@
     "concurrently": "^5.2.0",
     "eslint": "^7.6.0",
     "eslint-config-jquery": "^3.0.0",
-    "http2": "^3.3.7",
-    "node-sass": "^4.14.1",
     "raw-loader": "^4.0.1",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
@@ -85,7 +83,6 @@
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint js/**/*.js",
     "script": "webpack",
-    "style": "node-sass ${npm_package_config_styledir}/pre --source-map true --source-map-root . --include-path ${npm_package_config_styledir}/lib --output ${npm_package_config_styledir}",
-    "watch": "concurrently 'npm run style --watch' 'npm run script -- --watch --mode ${NODE_ENV}' 'yarn bsync'"
+    "watch": "concurrently 'npm run script -- --watch --mode ${NODE_ENV}' 'yarn bsync'"
   }
 }
