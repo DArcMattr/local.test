@@ -1,6 +1,6 @@
 "use strict";
 
-import timeInputFallback from "./modules/timeInputFallback";
+import timeInputFallback from "./modules/timeInputFallback.mjs";
 
 ( d => {
 	d.addEventListener( "focusin", event => {
