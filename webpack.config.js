@@ -15,7 +15,7 @@ module.exports = {
     } );
 
     return out;
-  } )( glob.sync( "./js/*.js" ) ),
+  } )( glob.sync( "./js/*.{,m}js" ) ),
   module: {
     rules: [
       {
@@ -23,7 +23,7 @@ module.exports = {
         use: [ "raw-loader" ]
       },
       {
-        test: /\.js$/,
+        test: /\.{,m}js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
