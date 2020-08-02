@@ -10,11 +10,6 @@
   --color-highlight: hsla(0, 100%, 66%, 0.5);
   --color-input-bg: var( --color-light );
   --color-input-fg: var( --color-dark );
-  background-color: var( --color-light );
-  color: var( --color-dark );
-  line-height: var( --lh );
-  font-size: var( --font-size );
-  font-family: serif;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -39,13 +34,19 @@
 }
 
 html {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template: 100vh / 100vw;
+  align-items: center;
+  justify-items: center;
+  background-color: var( --color-light );
+  color: var( --color-dark );
+  line-height: var( --lh );
+  font-size: var( --font-size );
+  font-family: serif;
 }
 
 body {
   width: 100%;
-  flex: 1 1 auto;
   max-width: calc( 30 * var( --lh ) );
   margin: auto;
 }
