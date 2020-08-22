@@ -4,22 +4,22 @@
   "name": "local.test",
   "private": true,
   "repository": {
-  	  "type": "git",
-  	  "url": "https://github.com/DArcMattr/local.test"
+    "type": "git",
+    "url": "https://github.com/DArcMattr/local.test"
   },
   "version": "1.0.0",
   "description": "",
   "main": "htdocs/js/main.js",
   "devDependencies": {
-    "@babel/core": "^7.11.0",
+    "@babel/core": "^7.11.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
-    "@babel/runtime": "^7.11.0",
+    "@babel/runtime": "^7.11.2",
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.12",
-    "concurrently": "^5.2.0",
-    "eslint": "^7.6.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.7.0",
     "eslint-config-jquery": "^3.0.0",
     "raw-loader": "^4.0.1",
     "stylelint": "^13.6.1",
@@ -49,14 +49,13 @@
       "cert": "./tls/local.test.pem"
     },
     "minify": false,
-    "notify": false,
+    "notify": true,
     "open": false,
     "reloadDebounce": 500,
     "reloadOnRestart": true,
     "watchOptions": {
       "ignoreInitial": true
-    },
-    "xip": true
+    }
   },
   "eslintConfig": {
     "root": true,
