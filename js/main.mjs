@@ -2,7 +2,20 @@
 
 import timeInputFallback from "./modules/timeInputFallback.mjs";
 
-( d => {
+( ( d, w ) => {
+	w.addEventListener( "load", event => {
+		const details = d.querySelectorAll( "details" );
+		console.log( { event } );
+
+		for ( let el of details ) {
+			for ( let child of el.children ) {
+				console.log(
+`${child.tagName}: ${child.scrollHeight}, ${child.clientHeight} ${child.offsetHeight}`
+				);
+			}
+		}
+	} );
+
 	d.addEventListener( "focusin", event => {
 		const tgt = event.target.closest( "input[type=time][min][max][step]" );
 
@@ -30,4 +43,4 @@ import timeInputFallback from "./modules/timeInputFallback.mjs";
 			control.classList.remove( "labeled" );
 		}
 	} );
-} )( document );
+} )( document, window );

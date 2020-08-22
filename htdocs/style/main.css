@@ -68,19 +68,18 @@ details {
 }
 
 summary {
+  position: relative;
+  padding-left: var( --lh );
   cursor: pointer;
   list-style: none;
 }
 
-summary::marker {
-  color: blue;
-}
-
 summary:before {
+  position: absolute;
+  left: 0;
   content: '\25b6';
-  margin-right: calc( var( --lh ) / 2 );
-  float: left;
   transition: transform linear .3s;
+  line-height: var( --font-size );
 }
 
 details[open] summary:before {
