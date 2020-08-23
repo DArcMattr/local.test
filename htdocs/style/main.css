@@ -10,6 +10,8 @@
   --color-highlight: hsla(0, 100%, 66%, 0.5);
   --color-input-bg: var( --color-light );
   --color-input-fg: var( --color-dark );
+  --transition-timing: 0.3s;
+  --transition-timing-function: ease-in-out;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -65,6 +67,19 @@ form {
 
 details {
   margin: var( --lh ) 0;
+  transition:
+    max-height
+    var( --transition-timing )
+    var( --transition-timing-function );
+  overflow-y: hidden;
+}
+
+details:not([open]) {
+  max-height: none;
+}
+
+details ::-webkit-details-marker {
+  display: none;
 }
 
 summary {
@@ -72,6 +87,10 @@ summary {
   padding-left: var( --lh );
   cursor: pointer;
   list-style: none;
+}
+
+summary:focus {
+  outline: none;
 }
 
 summary:before {
@@ -84,10 +103,6 @@ summary:before {
 
 details[open] summary:before {
   transform: rotate(90deg);
-}
-
-details ::-webkit-details-marker {
-  display: none;
 }
 
 form > label {

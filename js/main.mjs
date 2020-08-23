@@ -2,17 +2,55 @@
 
 import timeInputFallback from "./modules/timeInputFallback.mjs";
 
-( ( d, w ) => {
-	w.addEventListener( "load", event => {
-		const details = d.querySelectorAll( "details" );
-		console.log( { event } );
+const computeDetailMaxHeight = el => {
+	const parent = el.parentNode;
+	const parentPosition = parent.style.position;
 
-		for ( let el of details ) {
-			for ( let child of el.children ) {
-				console.log(
-`${child.tagName}: ${child.scrollHeight}, ${child.clientHeight} ${child.offsetHeight}`
-				);
+	let elClone = el.cloneNode( true );
+
+	elClone.setAttribute( "open", "open" );
+	elClone.style.position = "absolute";
+	elClone.style.visibility = "hidden";
+	elClone.style.top = "0";
+	elClone.style.right = "0";
+	elClone.style.left = "0";
+
+	parent.style.position = "relative";
+	parent.insertBefore( elClone, el );
+	el.dataset.maxHeight = elClone.scrollHeight;
+	el.dataset.minHeight = elClone.querySelector( "summary" ).scrollHeight;
+
+	elClone.remove();
+	parent.style.position = parentPosition;
+};
+
+( ( d, w ) => {
+	w.addEventListener( "load", () => {
+		const details = d.querySelectorAll( "details" );
+		const observer = new MutationObserver( mutations => {
+			for ( let m of mutations ) {
+				const tgt = m.target;
+				if (
+					m.type === "attributes" &&
+					m.attributeName === "open"
+				) {
+					if ( tgt.open === true ) {
+						computeDetailMaxHeight( tgt );
+						tgt.style.maxHeight = `${tgt.dataset.maxHeight}px`;
+					} else {
+						tgt.style.maxHeight = `${tgt.dataset.minHeight}px`;
+					}
+				}
 			}
+		} );
+
+		for ( let detail of details ) {
+			computeDetailMaxHeight( detail );
+
+			observer.observe(
+				detail,
+				{ attributes: true }
+			);
 		}
 	} );
 
