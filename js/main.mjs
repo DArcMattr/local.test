@@ -19,6 +19,7 @@ const computeDetailMaxHeight = el => {
 	parent.insertBefore( elClone, el );
 	el.dataset.maxHeight = elClone.scrollHeight;
 	el.dataset.minHeight = elClone.querySelector( "summary" ).scrollHeight;
+	el.style.maxHeight = `${el.dataset.minHeight}px`;
 
 	elClone.remove();
 	parent.style.position = parentPosition;
