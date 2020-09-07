@@ -12,13 +12,15 @@
   --color-input-fg: var( --color-dark );
   --transition-timing: 0.3s;
   --transition-timing-function: ease-in-out;
+  --color-bg: var( --color-light );
+  --color-fg: var( --color-dark );
 }
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
     --color-highlight: hsla(60, 100%, 66%, 0.5);
-    background-color: var( --color-dark );
-    color: var( --color-light );
+    --color-bg: var( --color-dark );
+    --color-fg: var( --color-light );
   }
 }
 
@@ -36,12 +38,8 @@
 }
 
 html {
-  display: grid;
-  grid-template: 100vh / 100vw;
-  align-items: center;
-  justify-items: center;
-  background-color: var( --color-light );
-  color: var( --color-dark );
+  background-color: var( --color-bg );
+  color: var( --color-fg );
   line-height: var( --lh );
   font-size: var( --font-size );
   font-family: serif;
@@ -97,7 +95,10 @@ summary:before {
   position: absolute;
   left: 0;
   content: '\25b6';
-  transition: transform linear .3s;
+  transition:
+    transform
+    var( --transition-timing )
+    var( --transition-timing-function );
   line-height: var( --font-size );
 }
 
@@ -109,6 +110,8 @@ form > label {
   display: block;
 }
 
+textarea,
+button,
 input {
   background-color: var(--color-input-bg);
   color: var(--color-input-fg);
