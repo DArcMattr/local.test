@@ -194,14 +194,14 @@ input[type=search] {
 }
 
 .search-container button span {
-  margin-left: -999em;
+  display: none;
 }
 
 .search-container button:before {
   content: "";
-  /* http://commons.wikimedia.org/wiki/File:Magnifying_glass_icon.svg */
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OTAiIGhlaWdodD0iNDkwIj4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjM2IiBzdHJva2UtbGluZWNhcD0icm91bmQiCmQ9Im0yODAsMjc4YTE1MywxNTMgMCAxLDAtMiwybDE3MCwxNzBtLTkxLTExNyAxMTAsMTEwLTI2LDI2LTExMC0xMTAiLz4KPC9zdmc+IA==");
+  background-image: url('/style/images/magnifying-glass.svg');
   background-size: contain;
+  background-color: var( --color-fg );
   display: inline-block;
   height: calc( 9 / 10 * var( --lh ) );
   width: calc( 9 / 10 * var( --lh ) );
