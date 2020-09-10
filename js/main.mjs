@@ -26,8 +26,24 @@ const computeDetailMaxHeight = el => {
 };
 
 ( ( d, w ) => {
+	const details = d.querySelectorAll( "details" );
+
+	for ( let detail of details ) {
+		detail.addEventListener( "click", event => {
+			const tgt = event.target;
+
+			if ( tgt.open ) {
+				event.preventDefault();
+
+				// trigger animation to close, then clear open attribute
+				// 1. Set max height to the minimum size, twist arrow
+				// 2. ontransitionend set attribute to closed
+				tgt.setAttribute( "open", tgt.open );
+			}
+		} );
+	}
+
 	w.addEventListener( "load", () => {
-		const details = d.querySelectorAll( "details" );
 		const observer = new MutationObserver( mutations => {
 			for ( let m of mutations ) {
 				const tgt = m.target;
