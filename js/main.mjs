@@ -32,18 +32,22 @@ const computeDetailMaxHeight = el => {
 	for ( let detail of details ) {
 		detail.addEventListener( "transitionend", event => {
 			const tgt = event.target;
-			if ( tgt.matches( "details" ) && tgt.open === true ) {
-				console.log( event.type, tgt.open );
+			if (
+				tgt.matches( "details" ) &&
+				tgt.open === true &&
+				tgt.style.maxHeight !== `${tgt.dataset.maxHeight}px`
+			) {
+				tgt.open = false;
 			}
-			tgt.style.maxHeight = null;
 		} );
 
 		detail.querySelector( "summary" ).addEventListener( "click", event => {
 			const parent = event.target.parentNode;
-			console.log( event.type, parent.open );
 			if ( parent.open === true ) {
 				event.preventDefault();
+				parent.style.maxHeight = `${parent.dataset.maxHeight}px`;
 				parent.style.maxHeight = `${parent.dataset.minHeight}px`;
+				parent.classList.remove( "pseudo-open" );
 			}
 		} );
 	}
@@ -56,10 +60,10 @@ const computeDetailMaxHeight = el => {
 					m.type === "attributes" &&
 					m.attributeName === "open"
 				) {
-					console.log( tgt.open );
 					if ( tgt.open === true ) {
 						computeDetailMaxHeight( tgt );
 						tgt.style.maxHeight = `${tgt.dataset.maxHeight}px`;
+						tgt.classList.add( "pseudo-open" );
 					} else {
 						tgt.style.maxHeight = `${tgt.dataset.minHeight}px`;
 					}
