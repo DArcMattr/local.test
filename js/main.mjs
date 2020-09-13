@@ -28,17 +28,22 @@ const computeDetailMaxHeight = el => {
 ( ( d, w ) => {
 	const details = d.querySelectorAll( "details" );
 
+
 	for ( let detail of details ) {
-		detail.addEventListener( "click", event => {
+		detail.addEventListener( "transitionend", event => {
 			const tgt = event.target;
+			if ( tgt.matches( "details" ) && tgt.open === true ) {
+				console.log( event.type, tgt.open );
+			}
+			tgt.style.maxHeight = null;
+		} );
 
-			if ( tgt.open ) {
+		detail.querySelector( "summary" ).addEventListener( "click", event => {
+			const parent = event.target.parentNode;
+			console.log( event.type, parent.open );
+			if ( parent.open === true ) {
 				event.preventDefault();
-
-				// trigger animation to close, then clear open attribute
-				// 1. Set max height to the minimum size, twist arrow
-				// 2. ontransitionend set attribute to closed
-				tgt.setAttribute( "open", tgt.open );
+				parent.style.maxHeight = `${parent.dataset.minHeight}px`;
 			}
 		} );
 	}
@@ -51,6 +56,7 @@ const computeDetailMaxHeight = el => {
 					m.type === "attributes" &&
 					m.attributeName === "open"
 				) {
+					console.log( tgt.open );
 					if ( tgt.open === true ) {
 						computeDetailMaxHeight( tgt );
 						tgt.style.maxHeight = `${tgt.dataset.maxHeight}px`;
