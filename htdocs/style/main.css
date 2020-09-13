@@ -121,9 +121,7 @@ input:focus:valid {
   outline: 1px solid green;
 }
 
-input:placeholder-shown:required,
-input:not(:placeholder-shown):invalid,
-input:focus:invalid {
+input.was-focused:invalid {
   outline: 3px solid red;
 }
 

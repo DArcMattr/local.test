@@ -81,6 +81,18 @@ const computeDetailMaxHeight = el => {
 		}
 	} );
 
+	d.addEventListener( "focusout", event => {
+		const timeOrDate = event.target.closest( "input:not([type=checkbox]):not([type=radio])" );
+		const theClass = "was-focused";
+
+		if (
+			timeOrDate !== null &&
+			!timeOrDate.classList.contains( theClass )
+		) {
+			timeOrDate.classList.add( theClass );
+		}
+	} );
+
 	d.addEventListener( "focusin", event => {
 		const tgt = event.target.closest( "input[type=time][min][max][step]" );
 
