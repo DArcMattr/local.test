@@ -14,13 +14,13 @@
 						<span>Search</span>
 						<input type='search' name='s' placeholder='Search . . .'>
 					</label>
-					<button type='submit'>
+					<button type='submit' value='a'>
 						<span>Search</span>
 					</button>
 				</form>
 			</nav>
 		</header>
-		<form action='/' method='GET'>
+		<form action='/' method='POST'>
 			<label for='giant-select'>Select</label>
 			<select id='giant-select' name='state'>
 				<option value="AL">Alabama</option>
@@ -164,8 +164,11 @@
 					vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 			</details>
 			<hr>
-			<button type='submit'>
+			<button type='submit' name='go'>
 				Go
+			</button>
+			<button type='submit' name='back'>
+				Back
 			</button>
 		</form>
 	</body>
