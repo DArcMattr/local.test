@@ -1,6 +1,6 @@
 {
   "author": "David Arceneaux <david@davidthemachine.org>",
-  "license": "UNLICENSED",
+  "license": "BSD-2-Clause",
   "name": "local.test",
   "private": true,
   "repository": {
