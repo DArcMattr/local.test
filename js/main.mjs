@@ -26,8 +26,31 @@ const computeDetailMaxHeight = el => {
 };
 
 ( ( d, w ) => {
+	const threshold = 5;
 	const details = d.querySelectorAll( "details" );
+	const selects = d.querySelectorAll( "select" );
+	const optionClones = [];
 
+	for ( let select of selects ) {
+		if ( select.options.length > threshold ) {
+			let newList = d.createElement( "datalist" ),
+				newOpt;
+			select.dataset.idProxy = select.hasAttribute( "id" ) ?
+				select.getAttribute( "id" ) :
+				`select-${( [ ...selects ].indexOf( select ) )}`;
+
+			newList.id = select.dataset.idProxy;
+			for ( let opt of select.options ) {
+				newOpt = d.createElement( "option" );
+				newOpt.value = opt.value;
+				newList.appendChild( newOpt );
+			}
+
+			optionClones.push( newList );
+
+			console.log( select.options );
+		}
+	}
 
 	for ( let detail of details ) {
 		detail.addEventListener( "transitionend", event => {
