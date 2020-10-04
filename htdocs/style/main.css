@@ -45,6 +45,8 @@ html {
   line-height: var( --lh );
   font-size: var( --font-size );
   font-family: serif;
+  display: flex;
+  min-height: 100%;
 }
 
 body {
