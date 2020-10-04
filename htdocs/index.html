@@ -23,7 +23,8 @@
 		<form action='/' method='GET'>
 			<label>
 				<span>Select</span>
-				<select name='state'>
+				<select name='state' required autofocus>
+					<option disabled value selected>US State</option>
 					<option value='AL'>Alabama</option>
 					<option value='AK'>Alaska</option>
 					<option value='AZ'>Arizona</option>
@@ -125,7 +126,6 @@
 				<label for='date'>
 					Date<br>
 					<input
-						autofocus
 						id='date'
 						name='date'
 						type='date'
