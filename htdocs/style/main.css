@@ -10,6 +10,8 @@
   --color-highlight: hsla(0, 100%, 66%, 0.5);
   --color-input-bg: var( --color-light );
   --color-input-fg: var( --color-dark );
+  --color-input-valid: green;
+  --color-input-invalid: red;
   --transition-timing: 0.3s;
   --transition-timing-function: ease-in-out;
   --color-bg: var( --color-light );
@@ -117,12 +119,12 @@ input {
   color: var(--color-input-fg);
 }
 
-input:focus:valid {
-  outline: 1px solid green;
+:focus:valid {
+  outline: 1px solid var( --color-input-valid );
 }
 
-input.was-focused:invalid {
-  outline: 3px solid red;
+.was-focused:invalid {
+  outline: 3px solid var( --color-input-invalid );
 }
 
 [aria-labelledby] {
