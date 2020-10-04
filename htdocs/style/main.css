@@ -80,15 +80,15 @@ details:not([open]) {
   max-height: none;
 }
 
-details ::-webkit-details-marker {
-  display: none;
-}
-
 summary {
   position: relative;
   padding-left: var( --lh );
   cursor: pointer;
   list-style: none;
+}
+summary::marker,
+summary::-webkit-details-marker {
+  display: none;
 }
 
 summary:focus {
@@ -131,7 +131,7 @@ input {
 
 [aria-labelledby] {
   display: grid;
-  grid-template-columns: repeat( auto-fill, 1fr );
+  grid-template-columns: repeat( auto-fill, minmax( 33.33%, 1fr ) );
 }
 
 input[type=search] {
