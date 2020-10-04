@@ -105,14 +105,19 @@ const computeDetailMaxHeight = el => {
 	} );
 
 	d.addEventListener( "focusout", event => {
-		const timeOrDate = event.target.closest( "input:not([type=checkbox]):not([type=radio])" );
+		const sels = [
+			"input:not([type=checkbox]):not([type=radio])",
+			"select",
+			"textarea"
+		];
+		const inputEl = event.target.closest( sels.join( "," ) );
 		const theClass = "was-focused";
 
 		if (
-			timeOrDate !== null &&
-			!timeOrDate.classList.contains( theClass )
+			inputEl !== null &&
+			!inputEl.classList.contains( theClass )
 		) {
-			timeOrDate.classList.add( theClass );
+			inputEl.classList.add( theClass );
 		}
 	} );
 
