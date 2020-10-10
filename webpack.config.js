@@ -19,10 +19,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.css$/i,
-        use: [ "raw-loader" ]
-      },
-      {
         test: /\.{,m}js$/,
         exclude: /node_modules/,
         use: {
