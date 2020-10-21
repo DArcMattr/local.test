@@ -23,7 +23,7 @@
     "eslint-config-jquery": "^3.0.0",
     "stylelint": "^13.7.2",
     "stylelint-config-recommended": "^3.0.0",
-    "webpack": "^4.44.2",
+    "webpack": "^5.0.0-rc.6",
     "webpack-cli": "^3.3.12"
   },
   "stylelint": {
