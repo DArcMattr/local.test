@@ -76,11 +76,11 @@
   },
   "scripts": {
     "bsync": "browser-sync start --host ${BROWSERSYNC_HOST} --proxy https://${BROWSERSYNC_HOST}",
-    "build": "npm run script -- --mode production",
+    "build": "webpack",
+    "install": "npm run build",
     "lint": "npm run lint:style && npm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint js/**/*.{,m}js",
-    "script": "webpack",
-    "watch": "concurrently 'npm run script -- --watch --mode ${NODE_ENV}' 'npm run bsync'"
+    "start": "concurrently 'NODE_ENV=development npm run build' 'npm run bsync'"
   }
 }

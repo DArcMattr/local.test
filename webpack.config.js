@@ -3,6 +3,8 @@
 const glob = require( "glob" );
 const path = require( "path" );
 
+const localMode = process.env.NODE_ENV || "production";
+
 module.exports = {
 	cache: true,
 	devtool: "cheap-module-source-map",
@@ -16,6 +18,7 @@ module.exports = {
 
 		return out;
 	} )( glob.sync( "./js/*.{,m}js" ) ),
+	mode: localMode,
 	module: {
 		rules: [ {
 			test: /\.{,m}js$/,
@@ -33,5 +36,9 @@ module.exports = {
 		filename: "[name].js",
 		path: path.resolve( __dirname, "htdocs/js" )
 	},
-	target: "web"
+	target: "web",
+	watch: localMode === "development",
+	watchOptions: {
+		ignored: [ "node_modules/**" ]
+	}
 };
