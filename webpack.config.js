@@ -30,6 +30,11 @@ module.exports = {
 					plugins: [ "@babel/plugin-transform-runtime" ]
 				}
 			}
+		},
+		{
+			test: /\.ts$/,
+			use: "ts-loader",
+			exclude: /node_modules/
 		} ]
 	},
 	output: {

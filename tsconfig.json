@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "htdocs/js",
+    "noImplicitAny": true,
+    "module": "es8",
+    "target": "es6",
+    "allowJs": true
+  }
+}
