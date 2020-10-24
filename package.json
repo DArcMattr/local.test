@@ -11,20 +11,20 @@
   "description": "",
   "main": "htdocs/js/main.js",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/runtime": "^7.11.2",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/runtime": "^7.12.1",
     "babel-loader": "^8.1.0",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.26.13",
     "concurrently": "^5.3.0",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.0",
     "eslint-config-jquery": "^3.0.0",
     "stylelint": "^13.7.2",
     "stylelint-config-recommended": "^3.0.0",
-    "webpack": "^5.0.0-rc.6",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.1.0"
   },
   "stylelint": {
     "extends": [
@@ -77,7 +77,7 @@
   "scripts": {
     "bsync": "browser-sync start --host ${BROWSERSYNC_HOST} --proxy https://${BROWSERSYNC_HOST}",
     "build": "webpack",
-    "install": "npm run build",
+    "postinstall": "npm run build",
     "lint": "npm run lint:style && npm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint js/**/*.{,m}js",
