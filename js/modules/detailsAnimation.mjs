@@ -1,6 +1,7 @@
 "use strict";
 
-( ( d, w ) => {
+( w => {
+	const d = w.document;
 	const details = d.querySelectorAll( "details" );
 
 	if ( d.querySelector( "style#detailsOverride" ) === null ) {
@@ -105,7 +106,7 @@ summary:before {
 			);
 		}
 	} );
-} )( document, window );
+} )( window );
 
 const computeDetailMaxHeight = el => {
 	const parent = el.parentNode;
@@ -129,5 +130,3 @@ const computeDetailMaxHeight = el => {
 	elClone.remove();
 	parent.style.position = parentPosition;
 };
-
-export default computeDetailMaxHeight;
