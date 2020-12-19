@@ -108,7 +108,14 @@ summary:before {
 	} );
 } )( window );
 
+/**
+ * @param {HTMLDetailsElement} el
+ */
 const computeDetailMaxHeight = el => {
+	if ( !( el instanceof HTMLDetailsElement ) ) {
+		return;
+	}
+
 	const parent = el.parentNode;
 	const parentPosition = parent.style.position;
 
