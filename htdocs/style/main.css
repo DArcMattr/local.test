@@ -69,45 +69,14 @@ form {
 
 details {
   margin: var( --lh ) 0;
-  transition:
-    max-height
-    var( --transition-timing )
-    var( --transition-timing-function );
-  overflow-y: hidden;
-}
-
-details:not([open]) {
-  max-height: none;
 }
 
 summary {
-  position: relative;
-  padding-left: var( --lh );
   cursor: pointer;
-  list-style: none;
-}
-summary::marker,
-summary::-webkit-details-marker {
-  display: none;
 }
 
 summary:focus {
   outline: none;
-}
-
-summary:before {
-  position: absolute;
-  left: 0;
-  content: '\25b6';
-  transition:
-    transform
-    var( --transition-timing )
-    var( --transition-timing-function );
-  line-height: var( --font-size );
-}
-
-details.pseudo-open summary:before {
-  transform: rotate(90deg);
 }
 
 form > label {

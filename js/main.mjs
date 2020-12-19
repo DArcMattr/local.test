@@ -27,9 +27,55 @@ const computeDetailMaxHeight = el => {
 
 ( ( d, w ) => {
 	const threshold = 5;
-	const details = d.querySelectorAll( "details" );
 	const selects = d.querySelectorAll( "select" );
 	const optionClones = [];
+
+	const details = d.querySelectorAll( "details" );
+	if ( d.querySelector( "style#detailsOverride" ) === null ) {
+		d.querySelector( "head" ).insertAdjacentHTML( "afterbegin", `
+<style id='detailsOverride'>
+:root {
+  --font-size: 1rem;
+  --line-height-multiplier: 1.25;
+  --lh: calc( var( --line-height-multiplier ) * var( --font-size ) );
+  --transition-timing: 0.3s;
+  --transition-timing-function: ease-in-out;
+}
+
+details:not([open]) {
+  max-height: none;
+}
+
+details {
+  transition:
+    max-height
+    var( --transition-timing )
+    var( --transition-timing-function );
+  overflow-y: hidden;
+}
+
+summary {
+  list-style: none;
+}
+
+summary:before {
+  content: '\\25b6';
+  display: inline-block;
+  transition:
+    transform
+    var( --transition-timing )
+    var( --transition-timing-function );
+  line-height: var( --font-size );
+  margin-right: calc( var( --lh ) / 3 );
+}
+
+.pre-open > summary:before {
+  transform: rotate(90deg);
+}
+</style>
+`
+		);
+	}
 
 	for ( let select of selects ) {
 		if ( select.options.length > threshold ) {
@@ -70,12 +116,17 @@ const computeDetailMaxHeight = el => {
 				event.preventDefault();
 				parent.style.maxHeight = `${parent.dataset.maxHeight}px`;
 				parent.style.maxHeight = `${parent.dataset.minHeight}px`;
-				parent.classList.remove( "pseudo-open" );
+				parent.classList.remove( "pre-open" );
 			}
 		} );
 	}
 
 	w.addEventListener( "load", () => {
+
+		/**
+		 * This allows for children to change size, yet keep the current
+		 * <details> element to animate around its current dimensions
+		 */
 		const observer = new MutationObserver( mutations => {
 			for ( let m of mutations ) {
 				const tgt = m.target;
@@ -86,7 +137,7 @@ const computeDetailMaxHeight = el => {
 					if ( tgt.open === true ) {
 						computeDetailMaxHeight( tgt );
 						tgt.style.maxHeight = `${tgt.dataset.maxHeight}px`;
-						tgt.classList.add( "pseudo-open" );
+						tgt.classList.add( "pre-open" );
 					} else {
 						tgt.style.maxHeight = `${tgt.dataset.minHeight}px`;
 					}
