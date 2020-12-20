@@ -78,6 +78,8 @@ summary:before {
 		/**
 		 * This allows for children to change size, yet keep the current
 		 * <details> element to animate around its current dimensions
+		 *
+		 * TODO: watch DOM for new <details> elements, attach eventlisteners in
 		 */
 		const observer = new MutationObserver( mutations => {
 			for ( let m of mutations ) {
