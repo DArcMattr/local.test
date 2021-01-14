@@ -42,7 +42,6 @@ module.exports = {
 		path: path.resolve( __dirname, "htdocs/js" )
 	},
 	target: "web",
-	watch: localMode === "development",
 	watchOptions: {
 		ignored: [ "node_modules/**" ]
 	}
