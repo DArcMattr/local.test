@@ -7,7 +7,7 @@ const localMode = process.env.NODE_ENV || "production";
 
 module.exports = {
 	cache: true,
-	devtool: "cheap-module-source-map",
+	devtool: process.env.NODE_ENV === "development" ? "eval-cheap-source-map" : "eval",
 	entry: ( files => {
 		let out = {};
 
