@@ -83,6 +83,6 @@
     "lint": "npm run lint:style && npm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint js/**/*.{,m}js",
-    "start": "concurrently 'NODE_ENV=development npm run build --watch' 'npm run bsync'"
+    "start": "concurrently 'NODE_ENV=development npx webpack --watch' 'npm run bsync'"
   }
 }
