@@ -5,27 +5,43 @@ import "./modules/detailsAnimation.mjs";
 
 ( d => {
 	const threshold = 5;
-	const selects = d.querySelectorAll( "select" );
-	const optionClones = [];
+	const $selects = [ ...d.querySelectorAll( "select" ) ];
 
-	for ( let select of selects ) {
-		if ( select.options.length > threshold ) {
-			let newList = d.createElement( "datalist" ),
-				newOpt;
-			select.dataset.idProxy = select.hasAttribute( "id" ) ?
-				select.getAttribute( "id" ) :
-				`select-${( [ ...selects ].indexOf( select ) )}`;
+	for ( const [ i, $select ] of $selects.entries() ) {
+		if ( $select.options.length > threshold ) {
+			const sourceId = $select.hasAttribute( "id" ) ?
+				$select.getAttribute( "id" ) :
+				`select-${i}`; // TODO: assogin this id to select
 
-			newList.id = select.dataset.idProxy;
-			for ( let opt of select.options ) {
-				newOpt = d.createElement( "option" );
-				newOpt.value = opt.value;
-				newList.appendChild( newOpt );
+			// or generate XPath instead?
+			const newId = `datalist-${sourceId}`;
+			let $newList = d.createElement( "datalist" ),
+				$newInput = d.createElement( "input" ),
+				$newOpt;
+			$select.dataset.idProxy = newId;
+			$newList.setAttribute( "id", newId );
+
+			$newInput.dataset.idProxy =  sourceId;
+			$newInput.setAttribute( "datalist", newId );
+			$newInput.setAttribute( "type", "text" );
+			$newInput.addEventListener( "change", event => {
+				const $this = event.currentTarget;
+				const $match = d.querySelector( `#${$this.dataset.idProxy}` );
+
+				$match.value = $this.value;
+			} );
+
+			$newList.id = $select.dataset.idProxy;
+			for ( let opt of $select.options ) {
+				$newOpt = d.createElement( "option" );
+				$newOpt.value = opt.value;
+				$newList.appendChild( $newOpt );
 			}
 
-			optionClones.push( newList );
+			d.querySelector( "body" ).appendChild( $newList );
 
-			console.log( select.options );
+			$select.setAttribute( "hidden", "" );
+			$select.parentNode.insertBefore( $newInput, $select );
 		}
 	}
 
