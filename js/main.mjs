@@ -2,6 +2,7 @@
 
 import timeInputFallback from "./modules/timeInputFallback.mjs";
 import "./modules/detailsAnimation.mjs";
+import "./modules/labeledClass.mjs";
 
 ( d => {
 	const threshold = 5;
@@ -78,26 +79,6 @@ import "./modules/detailsAnimation.mjs";
 
 		if ( tgt !== null ) {
 			timeInputFallback( tgt );
-		}
-	} );
-
-	d.addEventListener( "mouseover", event => {
-		const tgt = event.target.closest( "label" );
-
-		if ( tgt !== null ) {
-			const control = tgt.control;
-
-			control.classList.add( "labeled" );
-		}
-	} );
-
-	d.addEventListener( "mouseout", event => {
-		const tgt = event.target.closest( "label" );
-
-		if ( tgt !== null ) {
-			const control = tgt.control;
-
-			control.classList.remove( "labeled" );
 		}
 	} );
 } )( document );
