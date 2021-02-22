@@ -11,18 +11,18 @@ import "./modules/detailsAnimation.mjs";
 		if ( $select.options.length > threshold ) {
 			const sourceId = $select.hasAttribute( "id" ) ?
 				$select.getAttribute( "id" ) :
-				`select-${i}`; // TODO: assogin this id to select
-
-			// or generate XPath instead?
+				`select-${i}`; // or generate XPath instead?
 			const newId = `datalist-${sourceId}`;
 			let $newList = d.createElement( "datalist" ),
 				$newInput = d.createElement( "input" ),
-				$newOpt;
+				$newOpt,
+				patterns = '';
 			$select.dataset.idProxy = newId;
+			$select.setAttribute( "id", sourceId );
 			$newList.setAttribute( "id", newId );
 
 			$newInput.dataset.idProxy =  sourceId;
-			$newInput.setAttribute( "datalist", newId );
+			$newInput.setAttribute( "list", newId );
 			$newInput.setAttribute( "type", "text" );
 			$newInput.addEventListener( "change", event => {
 				const $this = event.currentTarget;
@@ -32,11 +32,13 @@ import "./modules/detailsAnimation.mjs";
 			} );
 
 			$newList.id = $select.dataset.idProxy;
-			for ( let opt of $select.options ) {
+			for ( let $opt of $select.options ) {
 				$newOpt = d.createElement( "option" );
-				$newOpt.value = opt.value;
+				$newOpt.value = $opt.text;
 				$newList.appendChild( $newOpt );
+				patterns = `${patterns}|${$opt.text}`;
 			}
+			$newList.setAttribute( "pattern", `^(${patterns})$` );
 
 			d.querySelector( "body" ).appendChild( $newList );
 
@@ -45,6 +47,8 @@ import "./modules/detailsAnimation.mjs";
 		}
 	}
 
+	// A substitute for ':user-invalid', which is only supported in Firefox ATM
+	// as ::-moz-ui-invalid
 	d.addEventListener( "focusout", event => {
 		const sels = [
 			"input:not([type=checkbox]):not([type=radio])",
