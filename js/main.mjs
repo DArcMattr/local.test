@@ -16,7 +16,7 @@ import "./modules/detailsAnimation.mjs";
 			let $newList = d.createElement( "datalist" ),
 				$newInput = d.createElement( "input" ),
 				$newOpt,
-				patterns = '';
+				patterns = "";
 			$select.dataset.idProxy = newId;
 			$select.setAttribute( "id", sourceId );
 			$newList.setAttribute( "id", newId );
@@ -27,18 +27,25 @@ import "./modules/detailsAnimation.mjs";
 			$newInput.addEventListener( "change", event => {
 				const $this = event.currentTarget;
 				const $match = d.querySelector( `#${$this.dataset.idProxy}` );
+				let j = 0;
 
-				$match.value = $this.value;
+				for ( const $opt of $match.options ) {
+					if ( $opt.text === $this.value ) {
+						$match.selectedIndex = j;
+						break;
+					}
+					j++;
+				}
 			} );
 
 			$newList.id = $select.dataset.idProxy;
-			for ( let $opt of $select.options ) {
+			for ( const $opt of $select.options ) {
 				$newOpt = d.createElement( "option" );
 				$newOpt.value = $opt.text;
 				$newList.appendChild( $newOpt );
 				patterns = `${patterns}|${$opt.text}`;
 			}
-			$newList.setAttribute( "pattern", `^(${patterns})$` );
+			$newInput.setAttribute( "pattern", `^(${patterns})$` );
 
 			d.querySelector( "body" ).appendChild( $newList );
 
