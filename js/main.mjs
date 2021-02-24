@@ -5,11 +5,15 @@ import "./modules/detailsAnimation.mjs";
 import "./modules/labeledClass.mjs";
 
 ( d => {
-	const threshold = 5;
 	const $selects = [ ...d.querySelectorAll( "select" ) ];
+	const defaultThreshold = 5;
+	const $dataThreshold = d.querySelector( "[data-threshold]" );
+	const threshold = $dataThreshold === null || $dataThreshold.dataset.threshold === undefined ?
+		defaultThreshold :
+		parseInt( $dataThreshold.dataset.threshold, 10 );
 
 	for ( const [ i, $select ] of $selects.entries() ) {
-		if ( $select.options.length > threshold ) {
+		if ( threshold < $select.options.length ) {
 			const sourceId = $select.hasAttribute( "id" ) ?
 				$select.getAttribute( "id" ) :
 				`select-${i}`; // or generate XPath instead?
