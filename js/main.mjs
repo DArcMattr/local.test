@@ -58,9 +58,11 @@ import "./modules/labeledClass.mjs";
 			$select.parentNode.insertBefore( $newInput, $select );
 		}
 	}
+} )( document );
 
-	// A substitute for ':user-invalid', which is only supported in Firefox ATM
-	// as ::-moz-ui-invalid
+// A substitute for ':user-invalid', which is only supported in Firefox ATM as
+// ::-moz-ui-invalid
+( d => {
 	d.addEventListener( "focusout", event => {
 		const sels = [
 			"input:not([type=checkbox]):not([type=radio])",
