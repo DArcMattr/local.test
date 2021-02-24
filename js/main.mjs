@@ -3,6 +3,7 @@
 import timeInputFallback from "./modules/timeInputFallback.mjs";
 import "./modules/detailsAnimation.mjs";
 import "./modules/labeledClass.mjs";
+import "./modules/searchSelects.mjs";
 
 // A substitute for ':user-invalid', which is only supported in Firefox ATM as
 // ::-moz-ui-invalid
