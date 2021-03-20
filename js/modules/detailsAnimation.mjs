@@ -32,7 +32,9 @@ summary {
 }
 
 summary:before {
-  content: '\\25b6';
+  content: '';
+  border: calc( var( --lh ) / 3 ) solid transparent;
+  border-left: calc( var( --lh ) / 3 ) solid currentColor;
   display: inline-block;
   transition:
     transform
