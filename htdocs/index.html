@@ -20,158 +20,190 @@
 				</form>
 			</nav>
 		</header>
-		<form action='/' method='GET'>
-			<label>
-				<span>Select</span>
-				<select name='state' required autofocus>
-					<option disabled value selected>US State</option>
-					<option value='AL'>Alabama</option>
-					<option value='AK'>Alaska</option>
-					<option value='AZ'>Arizona</option>
-					<option value='AR'>Arkansas</option>
-					<option value='CA'>California</option>
-					<option value='CO'>Colorado</option>
-					<option value='CT'>Connecticut</option>
-					<option value='DE'>Delaware</option>
-					<option value='DC'>District Of Columbia</option>
-					<option value='FL'>Florida</option>
-					<option value='GA'>Georgia</option>
-					<option value='HI'>Hawaii</option>
-					<option value='ID'>Idaho</option>
-					<option value='IL'>Illinois</option>
-					<option value='IN'>Indiana</option>
-					<option value='IA'>Iowa</option>
-					<option value='KS'>Kansas</option>
-					<option value='KY'>Kentucky</option>
-					<option value='LA'>Louisiana</option>
-					<option value='ME'>Maine</option>
-					<option value='MD'>Maryland</option>
-					<option value='MA'>Massachusetts</option>
-					<option value='MI'>Michigan</option>
-					<option value='MN'>Minnesota</option>
-					<option value='MS'>Mississippi</option>
-					<option value='MO'>Missouri</option>
-					<option value='MT'>Montana</option>
-					<option value='NE'>Nebraska</option>
-					<option value='NV'>Nevada</option>
-					<option value='NH'>New Hampshire</option>
-					<option value='NJ'>New Jersey</option>
-					<option value='NM'>New Mexico</option>
-					<option value='NY'>New York</option>
-					<option value='NC'>North Carolina</option>
-					<option value='ND'>North Dakota</option>
-					<option value='OH'>Ohio</option>
-					<option value='OK'>Oklahoma</option>
-					<option value='OR'>Oregon</option>
-					<option value='PA'>Pennsylvania</option>
-					<option value='RI'>Rhode Island</option>
-					<option value='SC'>South Carolina</option>
-					<option value='SD'>South Dakota</option>
-					<option value='TN'>Tennessee</option>
-					<option value='TX'>Texas</option>
-					<option value='UT'>Utah</option>
-					<option value='VT'>Vermont</option>
-					<option value='VA'>Virginia</option>
-					<option value='WA'>Washington</option>
-					<option value='WV'>West Virginia</option>
-					<option value='WI'>Wisconsin</option>
-					<option value='WY'>Wyoming</option>
-				</select>
-			</label>
-			<div aria-labelledby='gridly-checkboxen'>
-				<h1 id='gridly-checkboxen' class='section-title'>Options</h1>
+		<main>
+			<form action='/' method='GET'>
 				<label>
-					<input type="checkbox" name="foobar[]" value="1">
-					<span>Options 1</span>
+					<span>Select</span>
+					<select name='state' required autofocus>
+						<option disabled value selected>US State</option>
+						<option value='AL'>Alabama</option>
+						<option value='AK'>Alaska</option>
+						<option value='AZ'>Arizona</option>
+						<option value='AR'>Arkansas</option>
+						<option value='CA'>California</option>
+						<option value='CO'>Colorado</option>
+						<option value='CT'>Connecticut</option>
+						<option value='DE'>Delaware</option>
+						<option value='DC'>District Of Columbia</option>
+						<option value='FL'>Florida</option>
+						<option value='GA'>Georgia</option>
+						<option value='HI'>Hawaii</option>
+						<option value='ID'>Idaho</option>
+						<option value='IL'>Illinois</option>
+						<option value='IN'>Indiana</option>
+						<option value='IA'>Iowa</option>
+						<option value='KS'>Kansas</option>
+						<option value='KY'>Kentucky</option>
+						<option value='LA'>Louisiana</option>
+						<option value='ME'>Maine</option>
+						<option value='MD'>Maryland</option>
+						<option value='MA'>Massachusetts</option>
+						<option value='MI'>Michigan</option>
+						<option value='MN'>Minnesota</option>
+						<option value='MS'>Mississippi</option>
+						<option value='MO'>Missouri</option>
+						<option value='MT'>Montana</option>
+						<option value='NE'>Nebraska</option>
+						<option value='NV'>Nevada</option>
+						<option value='NH'>New Hampshire</option>
+						<option value='NJ'>New Jersey</option>
+						<option value='NM'>New Mexico</option>
+						<option value='NY'>New York</option>
+						<option value='NC'>North Carolina</option>
+						<option value='ND'>North Dakota</option>
+						<option value='OH'>Ohio</option>
+						<option value='OK'>Oklahoma</option>
+						<option value='OR'>Oregon</option>
+						<option value='PA'>Pennsylvania</option>
+						<option value='RI'>Rhode Island</option>
+						<option value='SC'>South Carolina</option>
+						<option value='SD'>South Dakota</option>
+						<option value='TN'>Tennessee</option>
+						<option value='TX'>Texas</option>
+						<option value='UT'>Utah</option>
+						<option value='VT'>Vermont</option>
+						<option value='VA'>Virginia</option>
+						<option value='WA'>Washington</option>
+						<option value='WV'>West Virginia</option>
+						<option value='WI'>Wisconsin</option>
+						<option value='WY'>Wyoming</option>
+					</select>
 				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="2">
-					<span>Options 2</span>
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="3">
-					Options 3
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="4">
-					Options 4
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="5">
-					Options 5
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="6">
-					Options 6
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="7">
-					Options 7
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="8">
-					Options 8
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="9">
-					Options 9
-				</label>
-				<label>
-					<input type="checkbox" name="foobar[]" value="a">
-					Options a
-				</label>
-			</div>
-			<div aria-labelledby='date-time'>
-				<h1 id='date-time' class='section-title'>Time &amp; Date</h1>
-				<label for='date'>
-					Date<br>
-					<input
-						id='date'
-						name='date'
-						type='date'
-						placeholder=' '
-						required
-					>
-				</label>
-				<label for='time'>
-					Time
-					<br>
-					<input
-						id='time'
-						name='time'
-						type='time'
-						step='900'
-						min='09:00'
-						max='17:00'
-						placeholder=' '
-						required
-					>
-				</label>
-			</div>
-			<details>
-				<summary>Lorem ipsum dolor sit amet</summary>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-					Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-					sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-					Neque porro quisquam est,
-					qui dolorem ipsum quia dolor sit amet, consectetur,
-					adipisci velit,
-					sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-					Ut enim ad minima veniam,
-					quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-					Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
-					vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-			</details>
-			<hr>
-			<button type='submit' name='go'>
-				Go
-			</button>
-			<button type='submit' name='back'>
-				Back
-			</button>
-		</form>
+				<div aria-labelledby='gridly-checkboxen'>
+					<h1 id='gridly-checkboxen' class='section-title'>Options</h1>
+					<label>
+						<input type="checkbox" name="foobar[]" value="1">
+						<span>Options 1</span>
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="2">
+						<span>Options 2</span>
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="3">
+						Options 3
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="4">
+						Options 4
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="5">
+						Options 5
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="6">
+						Options 6
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="7">
+						Options 7
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="8">
+						Options 8
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="9">
+						Options 9
+					</label>
+					<label>
+						<input type="checkbox" name="foobar[]" value="a">
+						Options a
+					</label>
+				</div>
+				<div aria-labelledby='date-time'>
+					<h1 id='date-time' class='section-title'>Time &amp; Date</h1>
+					<label for='date'>
+						Date<br>
+						<input
+							id='date'
+							name='date'
+							type='date'
+							placeholder=' '
+							required
+						>
+					</label>
+					<label for='time'>
+						Time
+						<br>
+						<input
+							id='time'
+							name='time'
+							type='time'
+							step='900'
+							min='09:00'
+							max='17:00'
+							placeholder=' '
+							required
+						>
+					</label>
+				</div>
+				<details>
+					<summary>Lorem ipsum dolor sit amet</summary>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+						totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+						Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+						sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+						Neque porro quisquam est,
+						qui dolorem ipsum quia dolor sit amet, consectetur,
+						adipisci velit,
+						sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+						Ut enim ad minima veniam,
+						quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+						Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
+						vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+				</details>
+				<hr>
+				<button type='submit' name='go'>
+					Go
+				</button>
+				<button type='submit' name='back'>
+					Back
+				</button>
+			</form>
+		</main>
+		<aside id='left'>
+			<nav>
+				<input type='radio' id='menu-1' name='menu' value='1'>
+				<input type='radio' id='menu-2' name='menu' value='2'>
+				<dl>
+					<dt><label for='menu-1'>Top 1</label></dt>
+					<dd>
+						<ul>
+							<li>one</li>
+							<li>two</li>
+							<li>three</li>
+							<li>four</li>
+							<li>five</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt><label for='menu-2'>Top 2</label></dt>
+					<dd>
+						<ul>
+							<li>one</li>
+							<li>two</li>
+							<li>three</li>
+							<li>four</li>
+							<li>five</li>
+						</ul>
+					</dd>
+				</dl>
+			</nav>
+		</aside>
 	</body>
 </html>

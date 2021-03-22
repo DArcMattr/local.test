@@ -50,13 +50,28 @@ html {
 }
 
 body {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: calc( 2 * var( --lh ) ) 1fr;
+  grid-template-areas:
+    "header header"
+    "left main";
   width: 100%;
-  max-width: calc( 30 * var( --lh ) );
+  max-width: calc( 40 * var( --lh ) );
   margin: auto;
 }
 
-header {
+body > header {
   height: calc(2 * var(--lh));
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+#left {
+  grid-area: left;
 }
 
 label {
