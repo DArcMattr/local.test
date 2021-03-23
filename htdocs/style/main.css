@@ -116,7 +116,7 @@ main {
 #menu-3:checked ~ [role='navigation'] > #menu-header-3 + dd,
 #menu-4:checked ~ [role='navigation'] > #menu-header-4 + dd,
 #menu-5:checked ~ [role='navigation'] > #menu-header-5 + dd {
-  flex-basis: auto;
+  flex-basis: var( --flex-basis );
 }
 
 

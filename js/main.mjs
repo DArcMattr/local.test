@@ -8,6 +8,12 @@ import "./modules/searchSelects.mjs";
 // A substitute for ':user-invalid', which is only supported in Firefox ATM as
 // ::-moz-ui-invalid
 ( d => {
+	const menuGroups = d.querySelectorAll( "#left [role='navigation'] dd" );
+
+	for ( const el of menuGroups ) {
+		el.style.setProperty( "--flex-basis", `${el.scrollHeight}px` );
+	}
+
 	d.addEventListener( "focusout", event => {
 		const sels = [
 			"input:not([type=checkbox]):not([type=radio])",
