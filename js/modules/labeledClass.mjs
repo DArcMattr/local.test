@@ -5,7 +5,9 @@
 		if ( tgt !== null ) {
 			const control = tgt.control;
 
-			control.classList.add( "labeled" );
+			if ( control.matches( ":not([hidden]), [type='hidden']" ) ) {
+				control.classList.add( "labeled" );
+			}
 		}
 	} );
 
