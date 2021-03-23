@@ -62,7 +62,7 @@ body {
 }
 
 body > header {
-  height: calc(2 * var(--lh));
+  height: calc( 2 * var( --lh ) );
   grid-area: header;
 }
 
@@ -70,9 +70,52 @@ main {
   grid-area: main;
 }
 
+:focus:valid {
+  outline: 1px solid var( --color-input-valid );
+}
+
+.was-focused:invalid {
+  outline: 3px solid var( --color-input-invalid );
+}
+
 #left {
   grid-area: left;
 }
+
+#left :where( [type='checkbox'], [type='radio'] ) {
+  display: none;
+}
+
+#left [role='navigation'] {
+  display: flex;
+  flex-direction: column;
+}
+
+#left [role='navigation'] dd {
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var( --transition-timing ) var( --transition-timing-function );
+}
+
+#left [role='navigation'] :where( ul, li ) {
+  display: contents;
+}
+
+#left [role='navigation'] :where( label, a )  {
+  display: block;
+  padding: .5ch;
+}
+
+#menu-1:checked ~ [role='navigation'] > #menu-header-1 + dd,
+#menu-2:checked ~ [role='navigation'] > #menu-header-2 + dd,
+#menu-3:checked ~ [role='navigation'] > #menu-header-3 + dd,
+#menu-4:checked ~ [role='navigation'] > #menu-header-4 + dd,
+#menu-5:checked ~ [role='navigation'] > #menu-header-5 + dd {
+  max-height: none;
+}
+
 
 label {
   cursor: pointer;
@@ -103,14 +146,6 @@ button,
 input {
   background-color: var(--color-input-bg);
   color: var(--color-input-fg);
-}
-
-:focus:valid {
-  outline: 1px solid var( --color-input-valid );
-}
-
-.was-focused:invalid {
-  outline: 3px solid var( --color-input-invalid );
 }
 
 [aria-labelledby] {

@@ -8,20 +8,7 @@
 		<link rel='stylesheet' href='/style/main.css'>
 	</head>
 	<body>
-		<header>
-			<nav>
-				<form action='/' method='GET' class='search-container'>
-					<label>
-						<span>Search</span>
-						<input type='search' name='s' placeholder='Search . . .'>
-					</label>
-					<button type='submit' value='a'>
-						<span>Search</span>
-					</button>
-				</form>
-			</nav>
-		</header>
-		<main>
+		<main role='main'>
 			<form action='/' method='GET'>
 				<label>
 					<span>Select</span>
@@ -177,34 +164,45 @@
 			</form>
 		</main>
 		<aside id='left'>
-			<nav>
-				<input type='radio' id='menu-1' name='menu' value='1'>
-				<input type='radio' id='menu-2' name='menu' value='2'>
-				<dl>
-					<dt><label for='menu-1'>Top 1</label></dt>
-					<dd>
-						<ul>
-							<li>one</li>
-							<li>two</li>
-							<li>three</li>
-							<li>four</li>
-							<li>five</li>
-						</ul>
-					</dd>
-				</dl>
-				<dl>
-					<dt><label for='menu-2'>Top 2</label></dt>
-					<dd>
-						<ul>
-							<li>one</li>
-							<li>two</li>
-							<li>three</li>
-							<li>four</li>
-							<li>five</li>
-						</ul>
-					</dd>
-				</dl>
-			</nav>
+			<input type='radio' id='menu-1' name='menu' value='1'>
+			<input type='radio' id='menu-2' name='menu' value='2'>
+			<dl role='navigation' aria-label='Menu'>
+				<dt id='menu-header-1'><label for='menu-1'>Top 1</label></dt>
+				<dd>
+					<ul>
+						<li><a href='#'>one</a></li>
+						<li><a href='#'>two</a></li>
+						<li><a href='#'>three</a></li>
+						<li><a href='#'>four</a></li>
+						<li><a href='#'>five</a></li>
+						<li><a href='#'>six</a></li>
+						<li><a href='#'>seven</a></li>
+						<li><a href='#'>eight</a></li>
+						<li><a href='#'>nine</a></li>
+					</ul>
+				</dd>
+				<dt id='menu-header-2'><label for='menu-2'>Top 2</label></dt>
+				<dd>
+					<ul>
+						<li><a href='#'>one</a></li>
+						<li><a href='#'>two</a></li>
+						<li><a href='#'>three</a></li>
+						<li><a href='#'>four</a></li>
+						<li><a href='#'>five</a></li>
+					</ul>
+				</dd>
+			</dl>
 		</aside>
+		<header role='navigation' aria-label='Search'>
+			<form action='/' method='GET' class='search-container'>
+				<label>
+					<span>Search</span>
+					<input type='search' name='s' placeholder='Search . . .'>
+				</label>
+				<button type='submit' value='a'>
+					<span>Search</span>
+				</button>
+			</form>
+		</header>
 	</body>
 </html>
