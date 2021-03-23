@@ -80,6 +80,7 @@ main {
 
 #left {
   grid-area: left;
+  overflow: auto;
 }
 
 #left :where( [type='checkbox'], [type='radio'] ) {
@@ -94,9 +95,11 @@ main {
 #left [role='navigation'] dd {
   padding: 0;
   margin: 0;
-  max-height: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
   overflow: hidden;
-  transition: max-height var( --transition-timing ) var( --transition-timing-function );
+  transition: flex-basis var( --transition-timing ) var( --transition-timing-function );
 }
 
 #left [role='navigation'] :where( ul, li ) {
@@ -113,7 +116,7 @@ main {
 #menu-3:checked ~ [role='navigation'] > #menu-header-3 + dd,
 #menu-4:checked ~ [role='navigation'] > #menu-header-4 + dd,
 #menu-5:checked ~ [role='navigation'] > #menu-header-5 + dd {
-  max-height: none;
+  flex-basis: auto;
 }
 
 
