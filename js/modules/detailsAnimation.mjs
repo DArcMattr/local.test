@@ -27,14 +27,14 @@ details {
   overflow-y: hidden;
 }
 
-summary {
-  list-style: none;
-}
-
-summary:before {
+summary:marker {
   content: '';
-  border: calc( var( --lh ) / 3 ) solid transparent;
-  border-left: calc( var( --lh ) / 3 ) solid currentColor;
+  clip-path: polygon(
+      0%   0%,
+      0% 100%,
+    100%  50%
+  );
+  background-color: currentColor;
   display: inline-block;
   transition:
     transform
@@ -42,9 +42,11 @@ summary:before {
     var( --transition-timing-function );
   line-height: var( --font-size );
   margin-right: calc( var( --lh ) / 3 );
+  height: var( --font-size );
+  width: calc( 1 * var( --font-size ) / 2 );
 }
 
-.pre-open > summary:before {
+.pre-open > summary:marker {
   transform: rotate(90deg);
 }
 </style>
