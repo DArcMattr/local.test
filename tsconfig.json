@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "htdocs/js",
+    "alwaysStrict": true,
     "noImplicitAny": true,
-    "module": "es8",
-    "target": "es6",
-    "allowJs": true
-  }
+    "module": "none",
+    "target": "es2019",
+    "inlineSourceMap": true,
+    "outFile": "htdocs/js/main.js",
+  },
+  "include": ["ts/**/*.ts"]
 }

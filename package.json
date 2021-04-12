@@ -7,17 +7,12 @@
     "type": "git",
     "url": "https://github.com/DArcMattr/local.test"
   },
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "htdocs/js/main.js",
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.14",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/runtime": "^7.13.10",
-    "babel-loader": "^8.2.2",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
     "browser-sync": "^2.26.14",
     "concurrently": "^6.0.0",
     "eslint": "^7.23.0",
@@ -25,18 +20,13 @@
     "stylelint": "^13.12.0",
     "stylelint-config-recommended": "^4.0.0",
     "ts-loader": "^8.1.0",
-    "typescript": "^4.2.3",
-    "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0"
+    "typescript": "^4.2.3"
   },
   "stylelint": {
     "extends": [
       "stylelint-config-recommended"
     ]
   },
-  "browserslist": [
-    "> 1%"
-  ],
   "browser-sync": {
     "cors": true,
     "files": [
@@ -62,15 +52,18 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "jquery": true,
-      "es2017": true,
+      "es2020": true,
       "browser": true
     },
     "extends": [
-      "jquery"
+      "plugin:@typescript-eslint/recommended"
     ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 6,
+      "ecmaVersion": "es2020",
       "sourceType": "module",
       "ecmaFeatures": {
         "impliedStrict": true
@@ -79,11 +72,11 @@
   },
   "scripts": {
     "bsync": "browser-sync start --host ${BROWSERSYNC_HOST} --proxy https://${BROWSERSYNC_HOST}",
-    "build": "webpack",
+    "build": "tsc",
     "postinstall": "npm run build",
-    "lint": "npm run lint:style && npm run lint:js",
+    "lint": "npm run lint:style && npm run lint:ts",
     "lint:style": "stylelint htdocs/style/**/*.css",
-    "lint:js": "eslint js/**/*.{,m}js",
-    "start": "concurrently 'NODE_ENV=development npx webpack --watch' 'npm run bsync'"
+    "lint:ts": "eslint ts/**/*.ts",
+    "start": "concurrently 'npx tsc --watch' 'npm run bsync'"
   }
 }

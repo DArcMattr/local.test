@@ -1,8 +1,6 @@
-"use strict";
-
-( w => {
-	const d = w.document;
-	const details = d.querySelectorAll( "details" );
+( function(w: Window): void {
+	const d: HTMLDocument = w.document;
+	const details: NodeListOf<Element> = d.querySelectorAll( "details" );
 
 	if ( d.querySelector( "style#detailsOverride" ) === null ) {
 		d.querySelector( "head" ).insertAdjacentHTML( "afterbegin", `
@@ -54,11 +52,11 @@ summary:marker {
 		);
 	}
 
-	for ( let detail of details ) {
-		detail.addEventListener( "transitionend", event => {
-			const tgt = event.target;
+	details.forEach( (detail: HTMLDetailsElement) => {
+		detail.addEventListener( "transitionend", (event: Event) => {
+			const tgt: HTMLElement = <HTMLElement> event.target;
 			if (
-				tgt.matches( "details" ) &&
+				tgt instanceof HTMLDetailsElement &&
 				tgt.open === true &&
 				tgt.style.maxHeight !== `${tgt.dataset.maxHeight}px`
 			) {
@@ -66,16 +64,19 @@ summary:marker {
 			}
 		} );
 
-		detail.querySelector( "summary" ).addEventListener( "click", event => {
-			const parent = event.target.parentNode;
-			if ( parent.open === true ) {
+		detail.querySelector( "summary" ).addEventListener( "click", (event: Event): void => {
+			const parent: HTMLElement = (event.target as HTMLElement).parentElement;
+			if (
+				parent instanceof HTMLDetailsElement &&
+				parent.open === true
+			   ) {
 				event.preventDefault();
 				parent.style.maxHeight = `${parent.dataset.maxHeight}px`;
 				parent.style.maxHeight = `${parent.dataset.minHeight}px`;
 				parent.classList.remove( "pre-open" );
 			}
 		} );
-	}
+	} );
 
 	w.addEventListener( "load", () => {
 
@@ -86,14 +87,15 @@ summary:marker {
 		 * TODO: watch DOM for new <details> elements, attach eventlisteners in
 		 */
 		const observer = new MutationObserver( mutations => {
-			for ( let m of mutations ) {
-				const tgt = m.target;
+			for ( const m of mutations ) {
+				const tgt: HTMLElement = <HTMLElement> m.target;
 				if (
+					tgt instanceof HTMLDetailsElement &&
 					m.type === "attributes" &&
 					m.attributeName === "open"
 				) {
 					if ( tgt.open === true ) {
-						computeDetailMaxHeight( tgt );
+						assignDetailMaxHeight( tgt );
 						tgt.style.maxHeight = `${tgt.dataset.maxHeight}px`;
 						tgt.classList.add( "pre-open" );
 					} else {
@@ -103,29 +105,25 @@ summary:marker {
 			}
 		} );
 
-		for ( let detail of details ) {
-			computeDetailMaxHeight( detail );
+		details.forEach( (detail: HTMLDetailsElement) => {
+			assignDetailMaxHeight( detail );
 
 			observer.observe(
 				detail,
 				{ attributes: true }
 			);
-		}
+		} );
 	} );
 } )( window );
 
 /**
  * @param {HTMLDetailsElement} el
  */
-const computeDetailMaxHeight = el => {
-	if ( !( el instanceof HTMLDetailsElement ) ) {
-		return;
-	}
+const assignDetailMaxHeight = (el: HTMLDetailsElement): void => {
+	const parent: HTMLElement = el.parentElement;
+	const parentPosition: string = parent.style.position;
 
-	const parent = el.parentNode;
-	const parentPosition = parent.style.position;
-
-	let elClone = el.cloneNode( true );
+	const elClone: HTMLDetailsElement = <HTMLDetailsElement> el.cloneNode( true );
 
 	elClone.setAttribute( "open", "open" );
 	elClone.style.position = "absolute";
@@ -136,8 +134,8 @@ const computeDetailMaxHeight = el => {
 
 	parent.style.position = "relative";
 	parent.insertBefore( elClone, el );
-	el.dataset.maxHeight = elClone.scrollHeight;
-	el.dataset.minHeight = elClone.querySelector( "summary" ).scrollHeight;
+	el.dataset.maxHeight = String(elClone.scrollHeight);
+	el.dataset.minHeight = String(elClone.querySelector( "summary" ).scrollHeight);
 	el.style.maxHeight = `${el.dataset.minHeight}px`;
 
 	elClone.remove();
