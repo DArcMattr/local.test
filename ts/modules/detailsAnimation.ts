@@ -25,12 +25,16 @@ details {
   overflow-y: hidden;
 }
 
-summary:marker {
+summary::marker {
+  content: '';
+}
+
+summary:before {
   content: '';
   clip-path: polygon(
-      0%   0%,
-      0% 100%,
-    100%  50%
+      0%  24%,
+      0%  76%,
+     80%  50%
   );
   background-color: currentColor;
   display: inline-block;
@@ -38,13 +42,14 @@ summary:marker {
     transform
     var( --transition-timing )
     var( --transition-timing-function );
+  transform-origin: 60% 50%;
   line-height: var( --font-size );
-  margin-right: calc( var( --lh ) / 3 );
+  margin-right: calc( var( --lh ) / 5 );
   height: var( --font-size );
   width: calc( 1 * var( --font-size ) / 2 );
 }
 
-.pre-open > summary:marker {
+.pre-open > summary:before {
   transform: rotate(90deg);
 }
 </style>
