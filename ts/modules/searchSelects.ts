@@ -1,3 +1,6 @@
+/**
+ * TODO: Add a mutation observer watching for new <select> elements
+ */
 ( (d: HTMLDocument): void => {
 	const $selects: Array<HTMLSelectElement> = Array.from(d.querySelectorAll("select"));
 	const defaultThreshold = 5;
@@ -22,7 +25,8 @@
 
 			$newInput.dataset.idProxy =  sourceId;
 			$newInput.setAttribute( "list", newId );
-			$newInput.setAttribute( "type", "text" );
+			$newInput.setAttribute( "type", "search" );
+			$newInput.setAttribute( "placeholder", $select.options[ $select.selectedIndex ].text );
 			$newInput.addEventListener( "change", (event: Event): void => {
 				const $this: HTMLInputElement = event.currentTarget as HTMLInputElement;
 				const $match: HTMLSelectElement = d.querySelector( `#${$this.dataset.idProxy}` );
@@ -40,8 +44,7 @@
 				$newOpt.value = $opt.text;
 				$newList.appendChild( $newOpt );
 				patterns = `${patterns}|${$opt.text}`;
-			}
-			);
+			} );
 			$newInput.setAttribute( "pattern", `^(${patterns})$` );
 
 			d.querySelector( "body" ).appendChild( $newList );
