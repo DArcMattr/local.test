@@ -2,10 +2,12 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "noImplicitAny": true,
+    "experimentalDecorators": true,
     "module": "none",
     "target": "es2019",
     "inlineSourceMap": true,
     "outFile": "htdocs/js/main.js",
+    "strictPropertyInitialization": false,
   },
   "include": ["ts/**/*.ts"]
 }
