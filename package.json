@@ -11,15 +11,15 @@
   "description": "",
   "main": "htdocs/js/main.js",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.28.0",
-    "@typescript-eslint/parser": "^4.28.0",
-    "browser-sync": "^2.26.14",
-    "concurrently": "^6.2.0",
-    "eslint": "^7.29.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "browser-sync": "^2.27.5",
+    "concurrently": "^6.2.1",
+    "eslint": "^7.32.0",
     "eslint-config-jquery": "^3.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-recommended": "^5.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.4.2"
   },
   "stylelint": {
     "extends": [
