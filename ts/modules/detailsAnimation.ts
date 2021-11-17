@@ -1,5 +1,5 @@
 ( function(w: Window): void {
-	const d: HTMLDocument = w.document;
+	const d: Document = w.document;
 	const details: NodeListOf<Element> = d.querySelectorAll( "details" );
 
 	if ( d.querySelector( "style#detailsOverride" ) === null ) {

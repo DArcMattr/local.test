@@ -7,7 +7,7 @@ import "./modules/searchSelects";
  * A substitute for ':user-invalid', which is only supported in Firefox ATM as
  * ::-moz-ui-invalid
  */
-( (d: HTMLDocument): void => {
+( (d: Document): void => {
 	const menuGroups : NodeListOf<HTMLElement> = d.querySelectorAll( "#left [role='navigation'] dd" );
 
 	menuGroups.forEach( (el: HTMLElement): void => {

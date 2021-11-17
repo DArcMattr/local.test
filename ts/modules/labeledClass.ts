@@ -1,4 +1,4 @@
-( ( d: HTMLDocument ): void => {
+( ( d: Document ): void => {
 	d.addEventListener( "mouseover", (event: Event): void => {
 		const tgt: HTMLLabelElement = (event.target as HTMLElement).closest( "label" );
 

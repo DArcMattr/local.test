@@ -1,7 +1,7 @@
 /**
  * TODO: Add a mutation observer watching for new <select> elements
  */
-( (d: HTMLDocument): void => {
+( (d: Document): void => {
 	const $selects: Array<HTMLSelectElement> = Array.from(d.querySelectorAll("select"));
 	const defaultThreshold = 5;
 	const $dataThreshold: HTMLElement = d.querySelector( "[data-threshold]" );
