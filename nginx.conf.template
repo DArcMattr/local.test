@@ -15,8 +15,8 @@ server {
   root /var/www/vhosts/local.test/htdocs;
   index index.php index.html index.htm;
 
-  ssl_certificate $document_root/../tls/local.test.pem;
-  ssl_certificate_key $document_root/../tls/local.test-key.pem;
+  ssl_certificate $document_root/../tls/local.pem;
+  ssl_certificate_key $document_root/../tls/local-key.pem;
 
   ssl_session_timeout 5m;
 

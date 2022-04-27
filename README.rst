@@ -17,13 +17,7 @@ Setup
 Pick a domain name ``<domain>`` to replace ``local.test``, or stick with what you
 get here. You'll need to create an ``/etc/hosts`` entry.
 
-Create TLS certificats via
-
-.. code-block:: sh
-
-	mkdir tls
-	cd tls
-	mkcert <domain>
+Create TLS certificates by running `npm run tls`
 
 Copy and modify the various ``*.template`` files.
 

@@ -1,7 +1,7 @@
 {
   "author": "David Arceneaux <david@davidthemachine.org>",
   "license": "BSD-2-Clause",
-  "name": "local.test",
+  "name": "Scratch Site",
   "private": true,
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
     ],
     "ghostMode": false,
     "https": {
-      "key": "./tls/local.test-key.pem",
-      "cert": "./tls/local.test.pem"
+      "key": "./tls/local-key.pem",
+      "cert": "./tls/local.pem"
     },
     "minify": false,
     "notify": true,
@@ -72,6 +72,7 @@
   "scripts": {
     "bsync": "browser-sync start --host ${BROWSERSYNC_HOST} --proxy https://${BROWSERSYNC_HOST}",
     "build": "tsc",
+    "tls": "mkdir -p ./tls && mkcert -cert-file ./tls/local.pem -key-file ./tls/local-key.pem ${BROWSERSYNC_HOST} 127.0.0.1 ::1 localhost",
     "postinstall": "npm run build",
     "lint": "npm run lint:style && npm run lint:ts",
     "lint:style": "stylelint htdocs/style/**/*.css",
