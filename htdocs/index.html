@@ -6,6 +6,81 @@
 		<script type='module' src='/js/main.js'></script>
 		<meta name='viewport' content='width=device-width'>
 		<link rel='stylesheet' href='/style/main.css'>
+<style>
+.cooldown-icon {
+	display: grid;
+	place-content: center;
+	background-color: pink;
+	position: relative;
+	height: 80px;
+	width: 80px;
+	background-image: url('/style/images/checker-board.svg');
+}
+
+.cooldown-icon span {
+	color: white;
+	text-stroke: 1px black;
+	position: relative;
+	z-index: 2;
+	font-size: calc( .8 * 80px );
+	background-color: transparent;
+	-webkit-text-stroke: 1px black;
+}
+
+.cooldown-icon:before {
+	display: inherit;
+	position: absolute;
+	content: '';
+	inset: 0;
+	background-color: black;
+	opacity: .5;
+	transform: rotateY(180deg);
+	animation-name: swirl;
+	animation-duration: 23s;
+	animation-timing-function: linear;
+	animation-direction: reverse;
+	animation-delay: -3s;
+	animation-fill-mode: both;
+	z-index: 1;
+}
+cooldown-icon {
+	background-color: pink;
+	background-image: url('/style/images/checker-board.svg');
+}
+
+@keyframes swirl {
+  from {
+    clip-path: polygon(50% 50%, 50% 0%, 50% 0%);
+  }
+  12.5% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%);
+  }
+  12.5000001% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 0%);
+  }
+  37.5% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%);
+  }
+  37.5000001% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 100% 100%);
+  }
+  62.5% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  62.5000001% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%);
+  }
+  87.5% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
+  }
+  87.5000001% {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%);
+  }
+  to {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+  }
+}
+</style>
 	</head>
 	<body>
 		<main role='main'>
@@ -109,6 +184,10 @@
 						<input type="checkbox" name="foobar[]" value="a">
 						Options a
 					</label>
+				</div>
+				<div>
+					<p><cooldown-icon title='Ability Name' duration='20' time-left='13' size='90' src='/style/images/checker-board.svg'></cooldown-icon></p>
+					<div class='cooldown-icon'><span>23</span></div>
 				</div>
 				<div aria-labelledby='date-time'>
 					<h1 id='date-time' class='section-title'>Time &amp; Date</h1>
