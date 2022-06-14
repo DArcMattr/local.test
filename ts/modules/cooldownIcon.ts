@@ -39,21 +39,20 @@ class cooldownIcon extends HTMLElement {
 	private template: HTMLTemplateElement = document.createElement( "template" );
 
 	private render(): void {
-		this.template.innerHTML = `
-<style>
+		// TODO: wait until TypeScript supports constructable stylesheets
+		// Firefox & Blink engines support it so far, waiting on WebKit
+		const style = `
 :host {
 	display: inline-block;
-	height: ${this.size}px;
-	width: ${this.size}px;
+	aspect-ratio: 1;
 }
 
-:host .icon {
+.icon {
 	display: inline-grid;
 	place-content: center;
-	position: relative;
-	background-image: url(${this.src});
-	height: inherit;
+	aspect-ratio: inherit;
 	width: inherit;
+	position: relative;
 }
 
 [part='swirl'] {
@@ -65,9 +64,7 @@ class cooldownIcon extends HTMLElement {
 	opacity: .5;
 	transform: rotateY(180deg);
 	animation-name: swirl;
-	animation-duration: ${this.duration}s;
 	animation-timing-function: linear;
-	animation-delay: ${( this.timeLeft - this.duration )}s;
 	animation-fill-mode: both;
 }
 
@@ -80,11 +77,11 @@ class cooldownIcon extends HTMLElement {
 	text-stroke: 1px black;
 	position: relative;
 	z-index: 2;
-	font-size: calc( var( --countdown-scale, .8 ) * ${this.size}px );
-	line-height: calc( var( --countdown-scale, .8 ) * ${this.size}px );
 	-webkit-text-stroke: 1px black;
+	text-stroke: 1px black;
 }
 
+/* XXX Firefox does not smoothly animate clip-path */
 @keyframes swirl { /* TODO: reverse Y-axis direction */
   to {
     clip-path: polygon(50% 50%, 50% 0%, 50% 0%);
@@ -117,6 +114,29 @@ class cooldownIcon extends HTMLElement {
     clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
   }
 }
+
+:host {
+	width: ${this.size}px;
+}
+
+.icon {
+	background-image: url(${this.src});
+}
+
+[part='swirl'] {
+	animation-delay: ${( this.timeLeft - this.duration )}s;
+	animation-duration: ${this.duration}s;
+}
+
+[part='countdown'] {
+	font-size: calc( var( --countdown-scale, .8 ) * ${this.size}px );
+	line-height: calc( var( --countdown-scale, .8 ) * ${this.size}px );
+}
+`;
+
+		this.template.innerHTML = `
+<style>
+${style}
 </style>
 <div class='icon'>
 	<div part='swirl'>
