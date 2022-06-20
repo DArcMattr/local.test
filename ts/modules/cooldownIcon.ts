@@ -16,8 +16,16 @@ class cooldownIcon extends HTMLElement {
 		return parseInt( this.getAttribute( "duration" ) ?? "0", 10 );
 	}
 
+	set duration( time: number ) {
+		this.setAttribute( "duration", time.toString() );
+	}
+
 	get size(): number {
 		return parseInt( this.getAttribute( "size" ) ?? "0", 10 );
+	}
+
+	set size( width: number ) {
+		this.setAttribute( "size", width.toString() );
 	}
 
 	get src(): string {
@@ -29,14 +37,27 @@ class cooldownIcon extends HTMLElement {
 		oldValue: string,
 		newValue: string
 	): void {
-		if ( name === 'duration' ) {
-			if ( oldValue !== null && oldValue !== newValue ) {
-				this.render();
-			}
+		switch ( name ) {
+			case 'duration':
+				if ( oldValue !== null && oldValue !== newValue ) {
+					this.render();
+				}
+
+				break;
+			case 'size':
+				this.$icon.style.width = `${newValue}px`;
+				break;
+			default:
 		}
 	}
 
 	private template: HTMLTemplateElement = document.createElement( "template" );
+
+	private $icon: HTMLElement;
+
+	private $swirl: HTMLElement;
+
+	private $countdown: HTMLElement;
 
 	private render(): void {
 		// TODO: wait until TypeScript supports constructable stylesheets
@@ -44,14 +65,12 @@ class cooldownIcon extends HTMLElement {
 		const style = `
 :host {
 	display: inline-block;
-	aspect-ratio: 1;
 }
 
 .icon {
 	display: inline-grid;
 	place-content: center;
-	aspect-ratio: inherit;
-	width: inherit;
+	aspect-ratio: 1;
 	position: relative;
 }
 
@@ -115,22 +134,9 @@ class cooldownIcon extends HTMLElement {
   }
 }
 
-:host {
-	width: ${this.size}px;
-}
-
-.icon {
-	background-image: url(${this.src});
-}
-
-[part='swirl'] {
-	animation-delay: ${( this.timeLeft - this.duration )}s;
-	animation-duration: ${this.duration}s;
-}
-
 [part='countdown'] {
 	font-size: calc( var( --countdown-scale, .8 ) * ${this.size}px );
-	line-height: calc( var( --countdown-scale, .8 ) * ${this.size}px );
+	line-height: ${this.size}px;
 }
 `;
 
@@ -138,16 +144,21 @@ class cooldownIcon extends HTMLElement {
 <style>
 ${style}
 </style>
-<div class='icon'>
-	<div part='swirl'>
+<div class='icon' style='width: ${this.size}px; background-image: url(${this.src})'>
+	<div part='swirl' style='animation-delay: ${( this.timeLeft - this.duration )}s; animation-duration: ${this.duration};'>
 	</div>
-	<div part='countdown'>
+	<div part='countdown' style=''>
 		${( this.timeLeft )}
 	</div>
 </div>
 `;
 
 		this.shadowRoot.replaceChildren( this.template.content.cloneNode( true ) );
+
+		this.$icon = this.shadowRoot.querySelector( ".icon" );
+		this.$countdown = this.shadowRoot.querySelector( "[part='countdown']" );
+		this.$swirl = this.shadowRoot.querySelector( "[part='swirl']" );
+
 		const countdownInterval = setInterval( () => {
 			const $countdown = this.shadowRoot.querySelector( "[part='countdown']" );
 

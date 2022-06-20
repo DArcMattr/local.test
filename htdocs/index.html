@@ -7,45 +7,8 @@
 		<meta name='viewport' content='width=device-width'>
 		<link rel='stylesheet' href='/style/main.css'>
 <style>
-.cooldown-icon {
-	display: grid;
-	place-content: center;
-	background-color: pink;
-	position: relative;
-	height: 80px;
-	width: 80px;
-	background-image: url('/style/images/checker-board.svg');
-}
-
-.cooldown-icon span {
-	color: white;
-	text-stroke: 1px black;
-	position: relative;
-	z-index: 2;
-	font-size: calc( .8 * 80px );
-	background-color: transparent;
-	-webkit-text-stroke: 1px black;
-}
-
-.cooldown-icon:before {
-	display: inherit;
-	position: absolute;
-	content: '';
-	inset: 0;
-	background-color: black;
-	opacity: .5;
-	transform: rotateY(180deg);
-	animation-name: swirl;
-	animation-duration: 23s;
-	animation-timing-function: linear;
-	animation-direction: reverse;
-	animation-delay: -3s;
-	animation-fill-mode: both;
-	z-index: 1;
-}
 cooldown-icon {
 	background-color: pink;
-	background-image: url('/style/images/checker-board.svg');
 }
 
 @keyframes swirl {
@@ -187,7 +150,7 @@ cooldown-icon {
 				</div>
 				<div>
 					<p><cooldown-icon title='Ability Name' duration='20' time-left='13' size='90' src='/style/images/checker-board.svg'></cooldown-icon></p>
-					<div class='cooldown-icon'><span>23</span></div>
+					<p><img alt='checker board' src='/style/images/checker-board.svg' width='90' height='90'></p>
 				</div>
 				<div aria-labelledby='date-time'>
 					<h1 id='date-time' class='section-title'>Time &amp; Date</h1>
