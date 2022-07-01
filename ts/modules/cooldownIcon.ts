@@ -60,6 +60,10 @@ class cooldownIcon extends HTMLElement {
 	private $countdown: HTMLElement;
 
 	private render(): void {
+		let swirlClass = "";
+
+		const startDiff = this.duration - this.timeLeft;
+
 		// TODO: wait until TypeScript supports constructable stylesheets
 		// Firefox & Blink engines support it so far, waiting on WebKit
 		const style = `
@@ -85,6 +89,7 @@ class cooldownIcon extends HTMLElement {
 	animation-name: swirl;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
+	animation-iteration-count: infinite;
 }
 
 [part='countdown'] { /* TODO: different scaling and colors for time remaining ranges */
@@ -139,13 +144,20 @@ class cooldownIcon extends HTMLElement {
 	line-height: ${this.size}px;
 }
 `;
+		if (startDiff > 0 ) {
+			swirlClass = "running";
+		}
 
 		this.template.innerHTML = `
 <style>
 ${style}
 </style>
 <div class='icon' style='width: ${this.size}px; background-image: url(${this.src})'>
-	<div part='swirl' style='animation-delay: ${( this.timeLeft - this.duration )}s; animation-duration: ${this.duration};'>
+	<div
+		part='swirl'
+		class='${swirlClass}'
+		style='animation-delay: ${( -1 * startDiff )}s; animation-duration: ${this.duration};'
+	>
 	</div>
 	<div part='countdown' style=''>
 		${( this.timeLeft )}
@@ -167,6 +179,7 @@ ${style}
 			if ( this.timeLeft <= 0 ) {
 				$countdown.innerHTML = "";
 				clearInterval( countdownInterval );
+				this.$swirl.style.animationPlayState = "paused";
 			} else {
 				$countdown.innerHTML = this.timeLeft.toString();
 			}
