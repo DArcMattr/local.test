@@ -89,7 +89,11 @@ class cooldownIcon extends HTMLElement {
 	animation-name: swirl;
 	animation-timing-function: linear;
 	animation-fill-mode: both;
-	animation-iteration-count: infinite;
+	animation-play-state: paused;
+}
+
+[part='swirl'].running {
+	animation-play-state: running;
 }
 
 [part='countdown'] { /* TODO: different scaling and colors for time remaining ranges */
@@ -156,7 +160,6 @@ ${style}
 	<div
 		part='swirl'
 		class='${swirlClass}'
-		style='animation-delay: ${( -1 * startDiff )}s; animation-duration: ${this.duration};'
 	>
 	</div>
 	<div part='countdown' style=''>
@@ -171,6 +174,9 @@ ${style}
 		this.$countdown = this.shadowRoot.querySelector( "[part='countdown']" );
 		this.$swirl = this.shadowRoot.querySelector( "[part='swirl']" );
 
+		this.$swirl.style.animationDuration = `${this.duration}s`;
+		this.$swirl.style.animationDelay = `${( -1 * startDiff )}s`;
+
 		const countdownInterval = setInterval( () => {
 			const $countdown = this.shadowRoot.querySelector( "[part='countdown']" );
 
@@ -179,7 +185,7 @@ ${style}
 			if ( this.timeLeft <= 0 ) {
 				$countdown.innerHTML = "";
 				clearInterval( countdownInterval );
-				this.$swirl.style.animationPlayState = "paused";
+				this.$swirl.classList.remove( "running" );
 			} else {
 				$countdown.innerHTML = this.timeLeft.toString();
 			}
