@@ -1,7 +1,5 @@
 node_modules/
-htdocs/js/
 htdocs/README.html
 tls/
 .in
 nginx.conf
-yarn-error.log

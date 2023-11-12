@@ -12,7 +12,7 @@ server {
   listen [::]:443 ssl http2;
   server_name local.test;
 
-  root /var/www/vhosts/local.test/htdocs;
+  root /var/www/vhosts/$server_name/htdocs;
   index index.php index.html index.htm;
 
   ssl_certificate $document_root/../tls/local.pem;
