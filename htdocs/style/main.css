@@ -74,7 +74,12 @@ main {
   outline: 1px solid var( --color-input-valid );
 }
 
-.was-focused:invalid {
+:is(
+  input:not([type=checkbox]):not([type=radio]):user-invalid,
+  select:user-invalid,
+  textarea:user-invalid,
+  .was-focused:invalid
+) {
   outline: 3px solid var( --color-input-invalid );
 }
 

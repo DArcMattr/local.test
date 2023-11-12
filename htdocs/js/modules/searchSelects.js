@@ -26,6 +26,7 @@
             $newInput.setAttribute("list", newId);
             $newInput.setAttribute("type", "search");
             $newInput.setAttribute("placeholder", $select.options[$select.selectedIndex].text);
+            $newInput.setAttribute("id", `search-for-${newId}`);
             $newInput.addEventListener("change", (event) => {
                 const $this = event.currentTarget;
                 const $match = d.querySelector(`#${$this.dataset.idProxy}`);
@@ -50,6 +51,10 @@
 
             $select.setAttribute("hidden", "");
             $select.parentNode.insertBefore($newInput, $select);
+            if ($select.hasAttribute("autofocus")) {
+                $select.removeAttribute("autofocus");
+                $newInput.focus();
+            }
         }
     });
 })(document);
