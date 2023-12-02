@@ -56,8 +56,8 @@ body {
   grid-template-areas:
     "header header"
     "left main";
-  width: 100%;
-  max-width: calc( 40 * var( --lh ) );
+  inline-size: 100%;
+  max-inline-size: calc( 40 * var( --lh ) );
   margin: auto;
 }
 
@@ -193,7 +193,7 @@ input[type=search] {
 .search-container label {
   display: inline-block;
   background-color: transparent;
-  padding-left: calc( 1 / 4 * var( --lh ) );
+  padding-inline-start: calc( 1 / 4 * var( --lh ) );
 }
 
 .search-container label > span {
@@ -219,7 +219,7 @@ input[type=search] {
   position: relative;
   background: transparent;
   border: none;
-  width: calc( 5 / 4 * var( --lh ) );
+  inline-size: calc( 5 / 4 * var( --lh ) );
 }
 
 .search-container button span {
@@ -232,9 +232,9 @@ input[type=search] {
   background-size: contain;
   background-color: var( --color-fg );
   display: inline-block;
-  height: calc( 9 / 10 * var( --lh ) );
-  width: calc( 9 / 10 * var( --lh ) );
+  block-size: calc( 9 / 10 * var( --lh ) );
+  inline-size: calc( 9 / 10 * var( --lh ) );
   position: absolute;
-  top: calc( 1 / 20 * var( --lh ) );
-  left: calc( 1 / 20 * var( --lh ) );
+  inset-block-start: calc( 1 / 20 * var( --lh ) );
+  inset-inline-start: calc( 1 / 20 * var( --lh ) );
 }
