@@ -44,6 +44,13 @@
     "reloadOnRestart": true
   },
   "eslintConfig": {
+    "env": {
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
     "plugins": [
       "jsdoc"
     ]
