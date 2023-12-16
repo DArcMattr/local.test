@@ -77,8 +77,7 @@ main {
 :is(
   input:not([type=checkbox]):not([type=radio]):user-invalid,
   select:user-invalid,
-  textarea:user-invalid,
-  .was-focused:invalid
+  textarea:user-invalid
 ) {
   outline: 3px solid var( --color-input-invalid );
 }
