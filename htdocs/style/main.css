@@ -44,9 +44,9 @@ html {
   color: var( --color-fg );
   line-height: var( --lh );
   font-size: var( --font-size );
-  font-family: serif;
+  font-family: ui-serif, serif;
   display: flex;
-  min-height: 100%;
+  min-block-size: 100%;
 }
 
 body {
@@ -68,6 +68,24 @@ body > header {
 
 main {
   grid-area: main;
+}
+
+p {
+  font-family: ui-sans-serif, sans-serif;
+}
+
+input {
+  font-family: ui-monospace, monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+summary {
+  font-family: ui-serif, serif;
 }
 
 :focus:valid {
@@ -147,6 +165,7 @@ summary:focus {
 
 form > label {
   display: block;
+  font-family: ui-serif, serif;
 }
 
 textarea,
