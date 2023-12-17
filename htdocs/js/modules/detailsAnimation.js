@@ -6,23 +6,20 @@
         d.querySelector("head").insertAdjacentHTML("afterbegin", `
 <style id='detailsOverride'>
 :root {
-  --font-size: 1rem;
-  --line-height-multiplier: 1.25;
-  --lh: calc( var( --line-height-multiplier ) * var( --font-size ) );
   --transition-timing: 0.3s;
   --transition-timing-function: ease-in-out;
 }
 
 details:not([open]) {
-  max-height: none;
+  max-block-size: none;
 }
 
 details {
   transition:
-    max-height
+    max-block-size
     var( --transition-timing )
     var( --transition-timing-function );
-  overflow-y: hidden;
+  overflow: clip;
 }
 
 summary::marker {
@@ -43,14 +40,14 @@ summary:before {
     var( --transition-timing )
     var( --transition-timing-function );
   transform-origin: 60% 50%;
-  line-height: var( --font-size );
-  margin-right: calc( var( --lh ) / 5 );
-  height: var( --font-size );
-  width: calc( 1 * var( --font-size ) / 2 );
+  line-height: inherit;
+  margin-inline-end: .2rem;
+  block-size: 1rem;
+  inline-size: .5rem;
 }
 
 .pre-open > summary:before {
-  transform: rotate(90deg);
+  transform: rotate(90deg); /* TODO account for writing-mode */
 }
 </style>
 `);
@@ -61,7 +58,7 @@ summary:before {
             const tgt = event.target;
             if (tgt instanceof HTMLDetailsElement &&
                 tgt.open === true &&
-                tgt.style.maxHeight !== `${tgt.dataset.maxHeight}px`) {
+                tgt.style.maxBlockSize !== `${tgt.dataset.maxBlockSize}px`) {
                 tgt.open = false;
             }
         });
@@ -71,8 +68,8 @@ summary:before {
             if (parent instanceof HTMLDetailsElement &&
                 parent.open === true) {
                 event.preventDefault();
-                parent.style.maxHeight = `${parent.dataset.maxHeight}px`;
-                parent.style.maxHeight = `${parent.dataset.minHeight}px`;
+                parent.style.maxBlockSize = `${parent.dataset.maxBlockSize}px`;
+                parent.style.maxBlockSize = `${parent.dataset.minBlockSize}px`;
                 parent.classList.remove("pre-open");
             }
         });
@@ -93,46 +90,52 @@ summary:before {
                     m.type === "attributes" &&
                     m.attributeName === "open") {
                     if (tgt.open === true) {
-                        assignDetailMaxHeight(tgt);
-                        tgt.style.maxHeight = `${tgt.dataset.maxHeight}px`;
+                        assignDetailMaxBlockSize(tgt);
+                        tgt.style.maxBlockSize = `${tgt.dataset.maxBlockSize}px`;
                         tgt.classList.add("pre-open");
                     }
                     else {
-                        tgt.style.maxHeight = `${tgt.dataset.minHeight}px`;
+                        tgt.style.maxBlockSize = `${tgt.dataset.minBlockSize}px`;
                     }
                 }
             }
         });
 
         details.forEach((detail) => {
-            assignDetailMaxHeight(detail);
+            assignDetailMaxBlockSize(detail);
 
             observer.observe(detail, { attributes: true });
         });
     });
 })(window);
 
-/** @param {HTMLDetailsElement} el
+/**
+ * @param {HTMLDetailsElement} el
  * @returns {void}
  */
-const assignDetailMaxHeight = (el) => {
+const assignDetailMaxBlockSize = (el) => {
     const parent = el.parentElement;
     const parentPosition = parent.style.position;
 
     const elClone = el.cloneNode(true);
+    const writingMode = getComputedStyle(document.body)['writingMode'];
 
     elClone.setAttribute("open", "open");
     elClone.style.position = "absolute";
     elClone.style.visibility = "hidden";
-    elClone.style.top = "0";
-    elClone.style.right = "0";
-    elClone.style.left = "0";
+    elClone.style.inset = "0";
 
     parent.style.position = "relative";
     parent.insertBefore(elClone, el);
-    el.dataset.maxHeight = String(elClone.scrollHeight);
-    el.dataset.minHeight = String(elClone.querySelector("summary").scrollHeight);
-    el.style.maxHeight = `${el.dataset.minHeight}px`;
+    el.style.maxBlockSize = `${el.dataset.minBlockSize}px`;
+
+    if (writingMode === 'horizontal-tb' || writingMode === 'horizontal-bt') {
+		el.dataset.maxBlockSize = String(elClone.scrollHeight);
+		el.dataset.minBlockSize = String(elClone.querySelector("summary").scrollHeight);
+    } else {
+		el.dataset.maxBlockSize = String(elClone.scrollWidth);
+		el.dataset.minBlockSize = String(elClone.querySelector("summary").scrollWidth);
+    }
 
     elClone.remove();
     parent.style.position = parentPosition;
