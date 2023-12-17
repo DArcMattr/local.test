@@ -1,5 +1,6 @@
 /**
  * Enhances HTML Time Inputs with a datalist that checks
+ *
  * @param {HTMLInputElement} inp - an <input> element of type='time'
  * @return {void} void
  */

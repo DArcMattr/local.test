@@ -96,7 +96,7 @@ main {
   flex-direction: column;
 }
 
-#left [role='navigation'] dd {
+#left [role='navigation'] .navmenu-body {
   padding: 0;
   margin: 0;
   flex-grow: 1;
@@ -115,11 +115,11 @@ main {
   padding: .5ch;
 }
 
-#menu-1:checked ~ [role='navigation'] > #menu-header-1 + dd,
-#menu-2:checked ~ [role='navigation'] > #menu-header-2 + dd,
-#menu-3:checked ~ [role='navigation'] > #menu-header-3 + dd,
-#menu-4:checked ~ [role='navigation'] > #menu-header-4 + dd,
-#menu-5:checked ~ [role='navigation'] > #menu-header-5 + dd {
+#menu-1:checked ~ [role='navigation'] > #menu-header-1 + .navmenu-body,
+#menu-2:checked ~ [role='navigation'] > #menu-header-2 + .navmenu-body,
+#menu-3:checked ~ [role='navigation'] > #menu-header-3 + .navmenu-body,
+#menu-4:checked ~ [role='navigation'] > #menu-header-4 + .navmenu-body,
+#menu-5:checked ~ [role='navigation'] > #menu-header-5 + .navmenu-body {
   flex-basis: var( --flex-basis );
 }
 
