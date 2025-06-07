@@ -1,0 +1,11 @@
+services:
+  web:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./htdocs:/usr/share/nginx/html
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./tls:/usr/share/nginx/tls
+    ports:
+      - 80:80
+      - 443:443
