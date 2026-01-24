@@ -2,7 +2,7 @@ services:
   web:
     image: nginx:alpine
     environment:
-      - BROWSERSYNC_HOST=${BROWSERSYNC_HOST:-local.localhost}
+      - DEV_HOST=${DEV_HOST:-local.localhost}
     restart: always
     volumes:
       - ./htdocs:/usr/share/nginx/html
@@ -14,5 +14,8 @@ services:
       - 443:443
   php-fpm:
     build: docker/php-fpm
+    environment:
+      - DEV_HOST=${DEV_HOST:-local.localhost}
+      - APP_ENV=local
     volumes:
       - ./htdocs:/usr/share/nginx/html

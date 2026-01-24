@@ -23,23 +23,6 @@
       "stylelint-config-recommended"
     ]
   },
-  "browser-sync": {
-    "cors": true,
-    "files": ["./htdocs/**/*"],
-    "ghostMode": false,
-    "open": false,
-    "notify": true,
-    "proxy": {
-      "target": "https://${BROWSERSYNC_HOST:-local.localhost}",
-      "proxyRes": [
-        "function(proxyRes, req, res) { res.setHeader('Access-Control-Allow-Origin', '*'); }"
-      ]
-    },
-    "https": {
-      "key": "./tls/${BROWSERSYNC_HOST:-local}-key.pem",
-      "cert": "./tls/${BROWSERSYNC_HOST:-local}.pem"
-    }
-  },
   "eslintConfig": {
     "env": {
       "es6": true
@@ -53,8 +36,8 @@
     ]
   },
   "scripts": {
-    "tls": "mkdir -p ./tls && mkcert -cert-file ./tls/${BROWSERSYNC_HOST:-local}.pem -key-file ./tls/${BROWSERSYNC_HOST:-local}-key.pem ${BROWSERSYNC_HOST:-local.localhost} localhost 127.0.0.1",
-    "bsync": "browser-sync start --config package.json",
+    "tls": "mkdir -p ./tls && mkcert -cert-file ./tls/${HOST:-local}.pem -key-file ./tls/${HOST:-local}-key.pem ${HOST:-local.localhost} localhost 127.0.0.1",
+    "bsync": "node script/bsync.js",
     "lint": "npm run lint:style && npm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint htdocs/js/**/*.js",
