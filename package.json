@@ -23,24 +23,12 @@
       "stylelint-config-recommended"
     ]
   },
-  "eslintConfig": {
-    "env": {
-      "es6": true
-    },
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "plugins": [
-      "jsdoc"
-    ]
-  },
   "scripts": {
     "tls": "mkdir -p ./tls && mkcert -cert-file ./tls/${HOST:-local}.pem -key-file ./tls/${HOST:-local}-key.pem ${HOST:-local.localhost} localhost 127.0.0.1",
     "bsync": "node script/bsync.js",
-    "lint": "npm run lint:style && npm run lint:js",
+    "lint": "pnpm run lint:style && pnpm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint htdocs/js/**/*.js",
-    "start": "npm run bsync"
+    "start": "pnpm run bsync"
   }
 }
