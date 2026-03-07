@@ -26,6 +26,23 @@
   }
 }
 
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  [open]::details-content {
+    block-size: auto;
+  }
+}
+
+@supports not (interpolate-size: allow-keywords) {
+  [open]::details-content {
+    block-size: 150px;
+    overflow-y: scroll;
+  }
+}
+
 * {
   line-height: inherit;
   font-size: inherit;
@@ -62,7 +79,7 @@ body {
 }
 
 body > header {
-  height: calc( 2 * var( --lh ) );
+  block-size: calc( 2 * var( --lh ) );
   grid-area: header;
 }
 
@@ -121,7 +138,6 @@ summary {
   flex-shrink: 0;
   flex-basis: 0;
   overflow: clip;
-  transition: flex-basis var( --transition-timing ) var( --transition-timing-function );
 }
 
 #left [role='navigation'] :where( ul, li ) {
@@ -132,15 +148,6 @@ summary {
   display: block;
   padding: .5ch;
 }
-
-#menu-1:checked ~ [role='navigation'] > #menu-header-1 + .navmenu-body,
-#menu-2:checked ~ [role='navigation'] > #menu-header-2 + .navmenu-body,
-#menu-3:checked ~ [role='navigation'] > #menu-header-3 + .navmenu-body,
-#menu-4:checked ~ [role='navigation'] > #menu-header-4 + .navmenu-body,
-#menu-5:checked ~ [role='navigation'] > #menu-header-5 + .navmenu-body {
-  flex-basis: var( --flex-basis );
-}
-
 
 label {
   cursor: pointer;
@@ -153,10 +160,20 @@ form {
 
 details {
   margin: var( --lh ) 0;
+  transition: all var(--transition-timing) var(--transition-timing-function);
+}
+
+::details-content {
+  transition:
+    all var(--transition-timing) var(--transition-timing-function),
+    content-visibility var(--transition-timing) var(--transition-timing-function);
+  block-size: 0;
+  overflow: clip;
 }
 
 summary {
   cursor: pointer;
+  transition: all var(--transition-timing) var(--transition-timing-function);
 }
 
 summary:focus {
@@ -197,11 +214,11 @@ input[type=search] {
 
 .search-container {
   display: inline-flex;
-  width: auto;
+  inline-size: auto;
   color: var( --color-input-fg );
   background-color: var( --color-input-bg );
   border-radius: calc( 1 / 2 * var( --lh ) );
-  height: var( --lh );
+  block-size: var( --lh );
   transition: background-color .3s ease-in-out;
 }
 
@@ -216,21 +233,21 @@ input[type=search] {
 }
 
 .search-container label > span {
-  width: auto;
+  inline-size: auto;
 }
 
 .search-container input[type='search'] {
   box-sizing: content-box;
   border: none;
-  width: calc( 4 * var( --lh ) );
-  transition: width .3s ease-in-out;
+  inline-size: calc( 4 * var( --lh ) );
+  transition: inline-size .3s ease-in-out;
   background-color: transparent;
   padding: 0;
   margin: 0;
 }
 
 .search-container input[type='search']:focus {
-  width: calc( 8 * var( --lh ) );
+  inline-size: calc( 8 * var( --lh ) );
   outline: none;
 }
 
