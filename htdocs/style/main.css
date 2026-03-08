@@ -125,27 +125,15 @@ summary {
     display: none;
   }
 
-  [role='navigation'] {
-    display: flex;
-    flex-direction: column;
-  }
+  [role='navigation']  {
+    a {
+      display: block;
+      padding: .5ch;
+    }
 
-  [role='navigation'] .navmenu-body {
-    padding: 0;
-    margin: 0;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
-    overflow: clip;
-  }
-
-  [role='navigation'] :where( ul, li ) {
-    display: contents;
-  }
-
-  [role='navigation'] :where( label, a )  {
-    display: block;
-    padding: .5ch;
+    :where( ul, li ) {
+      display: contents;
+    }
   }
 }
 
@@ -159,7 +147,8 @@ form {
 }
 
 details {
-  margin: var( --lh ) 0;
+  margin-block: var( --lh );
+  margin-inline: 0;
   transition: all var(--transition-timing) var(--transition-timing-function);
 }
 
@@ -174,10 +163,10 @@ details {
 summary {
   cursor: pointer;
   transition: all var(--transition-timing) var(--transition-timing-function);
-}
 
-summary:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 form > label {
