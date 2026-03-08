@@ -1,5 +1,6 @@
 /**
  * TODO: Add a mutation observer watching for new <select> elements
+ * @param {object} d - an HTML Document
  */
 ((d) => {
     const $selects = Array.from(d.querySelectorAll("select"));

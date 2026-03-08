@@ -166,7 +166,7 @@ details {
 ::details-content {
   transition:
     all var(--transition-timing) var(--transition-timing-function),
-    content-visibility var(--transition-timing) var(--transition-timing-function);
+    content-visibility var(--transition-timing) var(--transition-timing-function) allow-discrete;
   block-size: 0;
   overflow: clip;
 }
@@ -198,9 +198,7 @@ input {
 }
 
 input[type=search] {
-  -webkit-appearance: searchfield;
-  -moz-appearance: searchfield;
-  appearance: searchfield;
+  appearance: auto;
 }
 
 .section-title {

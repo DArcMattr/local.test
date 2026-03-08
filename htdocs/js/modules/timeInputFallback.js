@@ -1,8 +1,7 @@
 /**
  * Enhances HTML Time Inputs with a datalist that checks
- *
- * @param {HTMLInputElement} inp - an <input> element of type='time'
- * @return {void} void
+ * @param {object} inp - an <input> element of type='time'
+ * @returns {void} void
  */
 const timeInputFallback = (inp) => {
     const inpMin = inp.getAttribute("min");

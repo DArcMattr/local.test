@@ -1,3 +1,6 @@
+/**
+ * @param {object} d - an HTML Document
+ */
 ((d) => {
     d.addEventListener("mouseover", (event) => {
         const tgt = event.target.closest("label");

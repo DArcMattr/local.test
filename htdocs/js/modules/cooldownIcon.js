@@ -1,8 +1,9 @@
-/** @extends HTMLElement */
 class cooldownIcon extends HTMLElement {
 
-    /** @public
+    /**
+     * @public
      * @static
+     * @returns {string[]} - HTML element attribute to support
      */
     static get observedAttributes() {
         return ['duration', 'time-left', 'src', 'size'];
@@ -36,10 +37,11 @@ class cooldownIcon extends HTMLElement {
         return this.getAttribute("src") ?? "";
     }
 
-    /** @public
-     * @param {string} name
-     * @param {string} oldValue
-     * @param {string} newValue
+    /**
+     * @public
+     * @param {string} name - field name
+     * @param {string} oldValue - previous value
+     * @param {string} newValue - new value
      * @returns {void}
      */
     attributeChangedCallback(name, oldValue, newValue) {
@@ -57,7 +59,8 @@ class cooldownIcon extends HTMLElement {
         }
     }
 
-    /** @private
+    /**
+     * @private
      * @default document.createElement( "template" )
      */
     template = document.createElement("template");
@@ -71,7 +74,8 @@ class cooldownIcon extends HTMLElement {
     /** @private */
     $countdown = undefined;
 
-    /** @private
+    /**
+     * @private
      * @returns {void}
      */
     render() {
