@@ -10,31 +10,31 @@ class cooldownIcon extends HTMLElement {
     }
 
     get timeLeft() {
-        return parseInt(this.getAttribute("time-left") ?? "0", 10);
+        return parseInt(this.getAttribute('time-left') ?? '0', 10);
     }
 
     set timeLeft(time) {
-        this.setAttribute("time-left", time.toString());
+        this.setAttribute('time-left', time.toString());
     }
 
     get duration() {
-        return parseInt(this.getAttribute("duration") ?? "0", 10);
+        return parseInt(this.getAttribute('duration') ?? '0', 10);
     }
 
     set duration(time) {
-        this.setAttribute("duration", time.toString());
+        this.setAttribute('duration', time.toString());
     }
 
     get size() {
-        return parseInt(this.getAttribute("size") ?? "0", 10);
+        return parseInt(this.getAttribute('size') ?? '0', 10);
     }
 
     set size(width) {
-        this.setAttribute("size", width.toString());
+        this.setAttribute('size', width.toString());
     }
 
     get src() {
-        return this.getAttribute("src") ?? "";
+        return this.getAttribute('src') ?? '';
     }
 
     /**
@@ -63,7 +63,7 @@ class cooldownIcon extends HTMLElement {
      * @private
      * @default document.createElement( "template" )
      */
-    template = document.createElement("template");
+    template = document.createElement('template');
 
     /** @private */
     $icon = undefined;
@@ -79,7 +79,7 @@ class cooldownIcon extends HTMLElement {
      * @returns {void}
      */
     render() {
-        let swirlClass = "";
+        let swirlClass = '';
 
         const startDiff = this.duration - this.timeLeft;
 
@@ -167,7 +167,7 @@ class cooldownIcon extends HTMLElement {
 }
 `;
         if (startDiff > 0) {
-            swirlClass = "running";
+            swirlClass = 'running';
         }
 
         this.template.innerHTML = `
@@ -188,7 +188,7 @@ ${style}
 
         this.shadowRoot.replaceChildren(this.template.content.cloneNode(true));
 
-        this.$icon = this.shadowRoot.querySelector(".icon");
+        this.$icon = this.shadowRoot.querySelector('.icon');
         this.$countdown = this.shadowRoot.querySelector("[part='countdown']");
         this.$swirl = this.shadowRoot.querySelector("[part='swirl']");
 
@@ -201,9 +201,9 @@ ${style}
             this.timeLeft--;
 
             if (this.timeLeft <= 0) {
-                $countdown.innerHTML = "";
+                $countdown.innerHTML = '';
                 clearInterval(countdownInterval);
-                this.$swirl.classList.remove("running");
+                this.$swirl.classList.remove('running');
             }
             else {
                 $countdown.innerHTML = this.timeLeft.toString();
@@ -214,10 +214,10 @@ ${style}
     constructor() {
         super();
 
-        this.attachShadow({ mode: "open" });
+        this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.template.content.cloneNode(true));
         this.render();
     }
 }
 
-customElements.define("cooldown-icon", cooldownIcon);
+customElements.define('cooldown-icon', cooldownIcon);

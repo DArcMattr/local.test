@@ -1,26 +1,27 @@
 /**
- * @param {object} d - an HTML Document
+ * IIFE style behavior loader
+ * @param {HTMLDocument} d - the HTML Document
  */
 ((d) => {
-    d.addEventListener("mouseover", (event) => {
-        const tgt = event.target.closest("label");
+    d.addEventListener('mouseover', (event) => {
+        const tgt = event.target.closest('label');
 
         if (tgt !== null) {
             const control = tgt.control;
 
             if (control.matches(":not([hidden]), [type='hidden']")) {
-                control.classList.add("labeled");
+                control.classList.add('labeled');
             }
         }
     });
 
-    d.addEventListener("mouseout", (event) => {
-        const tgt = event.target.closest("label");
+    d.addEventListener('mouseout', (event) => {
+        const tgt = event.target.closest('label');
 
         if (tgt !== null) {
             const control = tgt.control;
 
-            control.classList.remove("labeled");
+            control.classList.remove('labeled');
         }
     });
 })(document);

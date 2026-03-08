@@ -15,6 +15,7 @@
     "browser-sync": "latest",
     "eslint": "latest",
     "eslint-plugin-jsdoc": "latest",
+    "globals": "^17.4.0",
     "stylelint": "latest",
     "stylelint-config-recommended": "latest"
   },
@@ -28,7 +29,7 @@
     "bsync": "node script/bsync.js",
     "lint": "pnpm run lint:style && pnpm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
-    "lint:js": "eslint htdocs/js/**/*.js",
+    "lint:js": "eslint",
     "start": "pnpm run bsync"
   }
 }
