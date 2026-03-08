@@ -19,11 +19,6 @@
     "stylelint": "latest",
     "stylelint-config-recommended": "latest"
   },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-recommended"
-    ]
-  },
   "scripts": {
     "tls": "mkdir -p ./tls && mkcert -cert-file ./tls/${HOST:-local}.pem -key-file ./tls/${HOST:-local}-key.pem ${HOST:-local.localhost} localhost 127.0.0.1",
     "bsync": "node script/bsync.js",
