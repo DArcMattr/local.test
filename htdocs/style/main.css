@@ -120,33 +120,33 @@ summary {
 #left {
   grid-area: left;
   overflow: auto;
-}
 
-#left :where( [type='checkbox'], [type='radio'] ) {
-  display: none;
-}
+  :where( [type='checkbox'], [type='radio'] ) {
+    display: none;
+  }
 
-#left [role='navigation'] {
-  display: flex;
-  flex-direction: column;
-}
+  [role='navigation'] {
+    display: flex;
+    flex-direction: column;
+  }
 
-#left [role='navigation'] .navmenu-body {
-  padding: 0;
-  margin: 0;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  overflow: clip;
-}
+  [role='navigation'] .navmenu-body {
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    overflow: clip;
+  }
 
-#left [role='navigation'] :where( ul, li ) {
-  display: contents;
-}
+  [role='navigation'] :where( ul, li ) {
+    display: contents;
+  }
 
-#left [role='navigation'] :where( label, a )  {
-  display: block;
-  padding: .5ch;
+  [role='navigation'] :where( label, a )  {
+    display: block;
+    padding: .5ch;
+  }
 }
 
 label {
@@ -218,57 +218,57 @@ input[type=search] {
   border-radius: calc( 1 / 2 * var( --lh ) );
   block-size: var( --lh );
   transition: background-color .3s ease-in-out;
-}
 
-.search-container:focus-within {
-  background-color: hsla( 60, 50%, 100%, 100% );
-}
+  label {
+    display: inline-block;
+    background-color: transparent;
+    padding-inline-start: calc( 1 / 4 * var( --lh ) );
+  }
 
-.search-container label {
-  display: inline-block;
-  background-color: transparent;
-  padding-inline-start: calc( 1 / 4 * var( --lh ) );
-}
+  &:focus-within {
+    background-color: hsla( 60, 50%, 100%, 100% );
+  }
 
-.search-container label > span {
-  inline-size: auto;
-}
+  label > span {
+    inline-size: auto;
+  }
 
-.search-container input[type='search'] {
-  box-sizing: content-box;
-  border: none;
-  inline-size: calc( 4 * var( --lh ) );
-  transition: inline-size .3s ease-in-out;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
-}
+  input[type='search'] {
+    box-sizing: content-box;
+    border: none;
+    inline-size: calc( 4 * var( --lh ) );
+    transition: inline-size .3s ease-in-out;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+  }
 
-.search-container input[type='search']:focus {
-  inline-size: calc( 8 * var( --lh ) );
-  outline: none;
-}
+  input[type='search']:focus {
+    inline-size: calc( 8 * var( --lh ) );
+    outline: none;
+  }
 
-.search-container button {
-  position: relative;
-  background: transparent;
-  border: none;
-  inline-size: calc( 5 / 4 * var( --lh ) );
-}
+  button {
+    position: relative;
+    background: transparent;
+    border: none;
+    inline-size: calc( 5 / 4 * var( --lh ) );
+  }
 
-.search-container button span {
-  display: none;
-}
+  button span {
+    display: none;
+  }
 
-.search-container button:before {
-  content: "";
-  background-image: url('/style/images/magnifying-glass.svg');
-  background-size: contain;
-  background-color: var( --color-fg );
-  display: inline-block;
-  block-size: calc( 9 / 10 * var( --lh ) );
-  inline-size: calc( 9 / 10 * var( --lh ) );
-  position: absolute;
-  inset-block-start: calc( 1 / 20 * var( --lh ) );
-  inset-inline-start: calc( 1 / 20 * var( --lh ) );
+  button:before {
+    content: "";
+    background-image: url('/style/images/magnifying-glass.svg');
+    background-size: contain;
+    background-color: var( --color-fg );
+    display: inline-block;
+    block-size: calc( 9 / 10 * var( --lh ) );
+    inline-size: calc( 9 / 10 * var( --lh ) );
+    position: absolute;
+    inset-block-start: calc( 1 / 20 * var( --lh ) );
+    inset-inline-start: calc( 1 / 20 * var( --lh ) );
+  }
 }
