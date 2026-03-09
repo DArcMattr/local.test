@@ -61,7 +61,7 @@ class cooldownIcon extends HTMLElement {
 
     /**
      * @private
-     * @default document.createElement( "template" )
+     * @default document.createElement( 'template' )
      */
     template = document.createElement('template');
 

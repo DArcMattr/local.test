@@ -1,6 +1,6 @@
 /**
  * Enhances HTML Time Inputs with a datalist that checks
- * @param {object} inp - an <input> element of type='time'
+ * @param {HTMLInputElement} inp - an <input> element of type='time'
  * @returns {void} void
  */
 const timeInputFallback = (inp) => {

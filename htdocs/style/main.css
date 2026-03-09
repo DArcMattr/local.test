@@ -249,7 +249,7 @@ input[type=search] {
   }
 
   button:before {
-    content: "";
+    content: '';
     background-image: url('/style/images/magnifying-glass.svg');
     background-size: contain;
     background-color: var( --color-fg );
