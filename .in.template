@@ -2,4 +2,6 @@
 DEV_HOST=local.localhost
 NODE_ENV=development
 
+alias composer='docker compose exec php-fpm composer'
+
 export DEV_HOST NODE_ENV
