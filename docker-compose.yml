@@ -10,12 +10,21 @@ services:
       - ./tls:/usr/share/nginx/tls
       - ./logs:/usr/share/nginx/logs
     ports:
-      - 80:80
-      - 443:443
+      - "${DEV_IP:-127.0.0.1}:80:80"
+      - "${DEV_IP:-127.0.0.1}:443:443"
+    networks:
+      - localtest
+    depends_on:
+      - php-fpm
   php-fpm:
     build: docker/php-fpm
     environment:
       - DEV_HOST=${DEV_HOST:-local.localhost}
-      - APP_ENV=local
+      - APP_ENV=${NODE_ENV:-development}
     volumes:
       - ./htdocs:/usr/share/nginx/html
+    networks:
+      - localtest
+networks:
+  localtest:
+    driver: bridge
