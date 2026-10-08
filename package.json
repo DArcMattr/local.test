@@ -20,7 +20,7 @@
     "stylelint-config-recommended": "latest"
   },
   "scripts": {
-    "tls": "mkdir -p ./tls && mkcert -cert-file ./tls/${HOST:-local}.pem -key-file ./tls/${HOST:-local}-key.pem ${HOST:-local.localhost} localhost 127.0.0.1",
+    "tls": "node script/tls.js",
     "bsync": "node script/bsync.js",
     "lint": "pnpm run lint:style && pnpm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",

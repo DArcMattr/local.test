@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 DEV_HOST=local.localhost
 NODE_ENV=development
+DEV_IP=127.0.0.1
 
 alias composer='docker compose exec php-fpm composer'
 
-export DEV_HOST NODE_ENV
+export DEV_HOST DEV_IP NODE_ENV

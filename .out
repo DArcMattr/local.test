@@ -3,4 +3,5 @@
 unalias composer
 
 unset DEV_HOST
+unset DEV_IP
 unset NODE_ENV
