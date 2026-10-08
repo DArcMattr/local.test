@@ -1,3 +1,6 @@
 #!/usr/bin/env zsh
+
+unalias composer
+
 unset DEV_HOST
 unset NODE_ENV
