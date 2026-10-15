@@ -20,11 +20,15 @@
     "stylelint-config-recommended": "latest"
   },
   "scripts": {
-    "tls": "node script/tls.js",
     "bsync": "node script/bsync.js",
     "lint": "pnpm run lint:style && pnpm run lint:js",
     "lint:style": "stylelint htdocs/style/**/*.css",
     "lint:js": "eslint",
-    "start": "pnpm run bsync"
+    "postinstall": "node script/postinstall.js",
+    "start": "pnpm run bsync",
+    "tls": "node script/tls.js"
+  },
+  "dependencies": {
+    "@csstools/normalize.css": "^12.1.1"
   }
 }

@@ -1,5 +1,6 @@
 node_modules/
 htdocs/README.html
+htdocs/style/normalize.css
 tls/
 .in
 nginx.conf
